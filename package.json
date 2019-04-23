@@ -1,0 +1,27 @@
+{
+  "name": "time-hulls",
+  "version": "0.0.3",
+  "description": "Calculates a series of convex hulls for periods of timestamped 2D point data",
+  "license": "MIT",
+  "repository": "mattsears18/time-hulls",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --recursive -reporter spec -w"
+  },
+  "keywords": [
+    "convex",
+    "hull",
+    "convex hull",
+    "eye tracking"
+  ],
+  "dependencies": {
+    "area-polygon": "^1.0.1",
+    "hull.js": "git://github.com/mattsears18/hull.git#length-3-pointsets",
+    "json2csv": "^4.5.0",
+    "jstat": "^1.7.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
