@@ -1,5 +1,5 @@
-require('./lib/TimeHullSeries');
-require('./lib/TimeHull');
+const TimeHullSeries  = require('./lib/TimeHullSeries');
+const TimeHull        = require('./lib/TimeHull');
 
 module.exports = {
   TimeHullSeries,

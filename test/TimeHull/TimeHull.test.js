@@ -108,45 +108,4 @@ describe('TimeHull - simple methods', () => {
     let timeHull = new TimeHull({ seriesPoints: points });
     expect(timeHull.lastPoint()).to.eql({ x: 100, y: 100, timestamp: 5000 });
   });
-
-  // it('gets the point times', () => {
-  //   let points = [
-  //       { x: 100, y: 100, timestamp: 1337 },
-  //       { x: 100, y: 100, timestamp: 2000 },
-  //       { x: 100, y: 100, timestamp: 3000 },
-  //       { x: 100, y: 100, timestamp: 4000 },
-  //       { x: 100, y: 100, timestamp: 5000 },
-  //     ],
-  //   });
-  //
-  //   let timeHull = new TimeHull({ seriesPoints: points });
-  //   expect(timeHull.pointTimes()).to.eql([
-  //     1337,
-  //     2000,
-  //     3000,
-  //     4000,
-  //     5000,
-  //   ]);
-  // });
-  //
-  // it('formats the point times', () => {
-  //   let viewing = Factory.create('viewing', {
-  //     points: [
-  //       { x: 100, y: 100, timestamp: 1337 },
-  //       { x: 100, y: 100, timestamp: 2000 },
-  //       { x: 100, y: 100, timestamp: 3000 },
-  //       { x: 100, y: 100, timestamp: 4000 },
-  //       { x: 100, y: 100, timestamp: 5000 },
-  //     ],
-  //   });
-  //
-  //   let timeHull = new TimeHull({ seriesPoints: points });
-  //   expect(timeHull.pointTimesText()).to.eql([
-  //     'Time: 1,337ms',
-  //     'Time: 2,000ms',
-  //     'Time: 3,000ms',
-  //     'Time: 4,000ms',
-  //     'Time: 5,000ms',
-  //   ]);
-  // });
 });
