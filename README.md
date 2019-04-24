@@ -3,7 +3,7 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/min/time-hulls.svg)
 
 # time-hulls
-Calculates series of convex hulls for periods of timestamped 2D point data
+Generates series of convex hulls for periods of timestamped, 2D point data
 
 ## Install
     npm install time-hulls
@@ -22,10 +22,10 @@ Calculates series of convex hulls for periods of timestamped 2D point data
     let series = new TimeHullSeries({
       points: points,
       period: 5000,
-      timestep: 0
-      includeIncomplete = true,
+      timestep: 0,
+      includeIncomplete: true,
       pointTrailLength: 10,
     })
 
     series.getHulls()
-    series.getCentroids()
+    series.getCentroids({})
