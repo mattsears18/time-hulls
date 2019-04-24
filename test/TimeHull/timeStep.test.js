@@ -1,14 +1,14 @@
 const TimeHull = require('../../lib/TimeHull');
 var expect     = require('chai').expect;
 
-describe('TimeHull.timeStep()', () => {
-  it('has too few points to calculate a timeStep', () => {
+describe('TimeHull.timestep()', () => {
+  it('has too few points to calculate a timestep', () => {
     let points = [{ x: 100, y: 100, timestamp: 0 }];
     let timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.timeStep()).to.equal(0);
+    expect(timeHull.timestep()).to.equal(0);
   });
 
-  it('gets a timeStep', () => {
+  it('gets a timestep', () => {
     let points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
@@ -18,6 +18,6 @@ describe('TimeHull.timeStep()', () => {
     ];
 
     let timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.timeStep()).to.equal(500);
+    expect(timeHull.timestep()).to.equal(500);
   });
 });
