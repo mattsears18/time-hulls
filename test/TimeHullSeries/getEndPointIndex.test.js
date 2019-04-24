@@ -76,4 +76,26 @@ describe('TimeHullSeries.getEndPointIndex()', () => {
     expect(() => { hullSeries.getEndPointIndex(3) }).to.throw('startIndexOutOfBounds');
     expect(() => { hullSeries.getEndPointIndex(20) }).to.throw('startIndexOutOfBounds');
   });
+
+  it('has a hull duration that is less than the period', () => {
+    let points = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 },
+      { x: 100, y: 100, timestamp: 2000 },
+      { x: 100, y: 100, timestamp: 3500 },
+      { x: 100, y: 100, timestamp: 4500 },
+      { x: 100, y: 100, timestamp: 5500 },
+      { x: 100, y: 100, timestamp: 6500 },
+      { x: 100, y: 100, timestamp: 7500 },
+    ];
+
+    let hullSeries = new TimeHullSeries({
+      points: points,
+      period: 5000,
+    });
+
+    expect(hullSeries.getEndPointIndex(0)).to.equal(4);
+    expect(hullSeries.getEndPointIndex(2)).to.equal(6);
+    expect(hullSeries.getEndPointIndex(3)).to.be.an('undefined');
+  });
 });

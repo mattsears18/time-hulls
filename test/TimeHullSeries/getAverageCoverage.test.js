@@ -36,4 +36,22 @@ describe('TimeHullSeries.getAverageCoverage()', () => {
 
     expect(series.getAverageCoverage()).to.equal(1340/9000);
   });
+
+  it('has no duration, so averageCoverage = 0', () => {
+    let points = [
+      { x: 100, y: 400, timestamp: 0 },
+      { x: 200, y: 300, timestamp: 0 },
+      { x: 300, y: 200, timestamp: 0 },
+      { x: 400, y: 100, timestamp: 0 },
+      { x: 500, y: 700, timestamp: 0 },
+    ];
+
+    let series = new TimeHullSeries({
+      points: points,
+      period: 5000,
+      timestep: 0,
+    });
+
+    expect(series.getAverageCoverage()).to.equal(0);
+  });
 });

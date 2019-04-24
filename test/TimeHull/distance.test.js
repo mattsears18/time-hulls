@@ -37,4 +37,13 @@ describe('TimeHull.distance()', () => {
     let timeHull = new TimeHull({ seriesPoints: points });
     expect(timeHull.distance('y')).to.equal(-400);
   });
+
+  it('has too few points to have a distance', () => {
+    let points = [
+      { x: 100, y: 100, timestamp: 0 },
+    ];
+
+    let timeHull = new TimeHull({ seriesPoints: points });
+    expect(timeHull.distance('y')).to.equal(0);
+  });
 });

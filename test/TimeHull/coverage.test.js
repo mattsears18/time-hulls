@@ -12,7 +12,7 @@ describe('TimeHull.coverage()', () => {
     expect(timeHull.coverage({})).to.equal(0);
   });
 
-  it('zero coverage', () => {
+  it('has zero coverage', () => {
     let points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
@@ -90,5 +90,35 @@ describe('TimeHull.coverage()', () => {
     ];
 
     expect(timeHull.coverage({ points: points, width: 1000, height: 1000 })).to.equal(0.03);
+  });
+
+  it('has does not provide stimulus dimensions', () => {
+    let points = [
+      { x: 0,   y: 0,   timestamp: 0 },
+      { x: 300, y: 0,   timestamp: 1000 },
+      { x: 300, y: 100, timestamp: 2000 },
+      { x: 0,   y: 100, timestamp: 3000 },
+    ];
+
+    let timeHull = new TimeHull({ seriesPoints: points });
+    expect(() => { timeHull.coverage({}) }).to.throw('noStimulusArea');
+
+    let timeHull2 = new TimeHull({ seriesPoints: points, width: 1000 });
+    expect(() => { timeHull2.coverage({}) }).to.throw('noStimulusArea');
+
+    let timeHull3 = new TimeHull({ seriesPoints: points, height: 1000 });
+    expect(() => { timeHull3.coverage({}) }).to.throw('noStimulusArea');
+  });
+
+  it('has zero stimulus area', () => {
+    let points = [
+      { x: 0,   y: 0,   timestamp: 0 },
+      { x: 300, y: 0,   timestamp: 1000 },
+      { x: 300, y: 100, timestamp: 2000 },
+      { x: 0,   y: 100, timestamp: 3000 },
+    ];
+
+    let timeHull = new TimeHull({ seriesPoints: points, width: 0, height: 0 });
+    expect(() => { timeHull.coverage({}) }).to.throw('noStimulusArea');
   });
 });

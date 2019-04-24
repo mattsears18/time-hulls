@@ -6,7 +6,8 @@
   "repository": "mattsears18/time-hulls",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive -reporter spec -w"
+    "test": "nyc mocha --recursive",
+    "testWatch": "mocha --recursive -w"
   },
   "keywords": [
     "convex",
@@ -23,6 +24,7 @@
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",
     "mocha": "^6.1.4",
-    "mocha-lcov-reporter": "^1.3.0"
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^14.0.0"
   }
 }
