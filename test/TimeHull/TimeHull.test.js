@@ -2,6 +2,10 @@ const TimeHull = require('../../lib/TimeHull');
 var expect     = require('chai').expect;
 
 describe('TimeHull.constructor()', () => {
+  it('creates a TimeHull without passing options', () => {
+    expect(() => { new TimeHull() }).to.throw('noSeriesPoints');
+  });
+
   it('has undefined seriesPoints', () => {
     expect(() => { new TimeHull({}) }).to.throw('noSeriesPoints');
   });

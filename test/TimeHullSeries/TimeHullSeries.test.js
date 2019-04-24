@@ -2,6 +2,10 @@ const TimeHullSeries  = require('../../lib/TimeHullSeries');
 var expect            = require('chai').expect;
 
 describe('TimeHullSeries.constructor()', () => {
+  it('creates a TimeHullSeries without passing options', () => {
+    expect(() => { new TimeHullSeries() }).to.throw('noPoints');
+  });
+
   it('has undefined points', () => {
     expect(() => { new TimeHullSeries({}) }).to.throw('noPoints');
   });

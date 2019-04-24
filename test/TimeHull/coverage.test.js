@@ -36,6 +36,18 @@ describe('TimeHull.coverage()', () => {
     expect(timeHull.coverage({})).to.equal(0.005);
   });
 
+  it('gets coverage without passing options', () => {
+    let points = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 200, y: 100, timestamp: 1000 },
+      { x: 200, y: 200, timestamp: 2000 },
+      { x: 100, y: 200, timestamp: 3000 },
+    ];
+
+    let timeHull = new TimeHull({ seriesPoints: points, width: 2000, height: 1000 });
+    expect(timeHull.coverage()).to.equal(0.005);
+  });
+
   it('gets coverage with inner points', () => {
     let points = [
       { x: 100, y: 100, timestamp: 0 },

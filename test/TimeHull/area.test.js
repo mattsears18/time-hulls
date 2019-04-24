@@ -2,6 +2,18 @@ const TimeHull = require('../../lib/TimeHull');
 var expect     = require('chai').expect;
 
 describe('TimeHull.area()', () => {
+  it('gets an area without passing options', () => {
+    let points = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 200, y: 100, timestamp: 1000 },
+      { x: 200, y: 200, timestamp: 2000 },
+      { x: 100, y: 200, timestamp: 3000 },
+    ];
+
+    let timeHull = new TimeHull({ seriesPoints: points });
+    expect(timeHull.area()).to.equal(10000);
+  });
+
   it('gets an area with no inner points', () => {
     let points = [
       { x: 100, y: 100, timestamp: 0 },

@@ -2,6 +2,24 @@ const TimeHull = require('../../lib/TimeHull');
 var expect     = require('chai').expect;
 
 describe('TimeHull.polygon()', () => {
+  it('gets a polygon without passing options', () => {
+    let points = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 200, y: 100, timestamp: 1000 },
+      { x: 200, y: 200, timestamp: 2000 },
+      { x: 100, y: 200, timestamp: 3000 },
+    ];
+
+    let timeHull = new TimeHull({ seriesPoints: points });
+    expect(timeHull.polygon()).to.eql([
+      { x: 200, y: 200 },
+      { x: 100, y: 200 },
+      { x: 100, y: 100 },
+      { x: 200, y: 100 },
+      { x: 200, y: 200 },
+    ]);
+  });
+
   it('gets a polygon with no inner points', () => {
     let points = [
       { x: 100, y: 100, timestamp: 0 },

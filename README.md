@@ -29,4 +29,4 @@ Generates series of convex hulls for periods of timestamped, 2D point data
     })
 
     series.getHulls()
-    series.getCentroids({})
+    series.getCentroids()
