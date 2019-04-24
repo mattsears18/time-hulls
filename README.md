@@ -1,4 +1,5 @@
 ![Travis (.org)](https://img.shields.io/travis/mattsears18/time-hulls.svg)
+![Coveralls github](https://img.shields.io/coveralls/github/mattsears18/time-hulls.svg)
 ![npm](https://img.shields.io/npm/v/time-hulls.svg?color=blue)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/time-hulls.svg)
 
