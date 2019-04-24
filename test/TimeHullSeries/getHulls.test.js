@@ -287,4 +287,84 @@ describe('TimeHullSeries.getHulls()', () => {
     expect(hulls[1].endIndex).to.equal(9);
     expect(hulls[2].endIndex).to.equal(14);
   });
+
+  it('gets non-everlapping step hulls with an incomplete initial hull', () => {
+    let points = [
+      { x: 100, y: 100, timestamp: 0 },         // 0
+      { x: 100, y: 100, timestamp: 1000 },      // 0
+      { x: 100, y: 100, timestamp: 2000 },      // 0
+      { x: 100, y: 100, timestamp: 3000 },      //  1
+      { x: 100, y: 100, timestamp: 4000 },      //  1
+      { x: 100, y: 100, timestamp: 5000 },      //  1
+      { x: 100, y: 100, timestamp: 6000 },      //  1
+      { x: 100, y: 100, timestamp: 7000 },      //  1
+      { x: 100, y: 100, timestamp: 8000 },      //  1
+      { x: 100, y: 100, timestamp: 9000 },      //   2
+      { x: 100, y: 100, timestamp: 10000 },     //   2
+      { x: 100, y: 100, timestamp: 11000 },     //   2
+      { x: 100, y: 100, timestamp: 12000 },     //   2
+      { x: 100, y: 100, timestamp: 13000 },     //   2
+      { x: 100, y: 100, timestamp: 14000 },     //   2
+    ];
+
+    let hullSeries = new TimeHullSeries({
+      points: points,
+      period: 5000,
+      timestep: 5001,
+      includeIncomplete: true,
+    });
+
+    let hulls = hullSeries.getHulls();
+
+    expect(hulls.length).to.equal(3);
+    expect(hulls[0].startIndex).to.equal(0);
+    expect(hulls[1].startIndex).to.equal(3);
+    expect(hulls[2].startIndex).to.equal(9);
+
+    expect(hulls[0].endIndex).to.equal(2);
+    expect(hulls[1].endIndex).to.equal(8);
+    expect(hulls[2].endIndex).to.equal(14);
+  });
+
+  it('gets non-everlapping step hulls', () => {
+    let points = [
+      { x: 100, y: 100, timestamp: 0 },         // 0
+      { x: 100, y: 100, timestamp: 1000 },      // 0
+      { x: 100, y: 100, timestamp: 2000 },      // 0
+      { x: 100, y: 100, timestamp: 3000 },      //  1
+      { x: 100, y: 100, timestamp: 4000 },      //  1
+      { x: 100, y: 100, timestamp: 5000 },      //  1
+      { x: 100, y: 100, timestamp: 6000 },      //   2
+      { x: 100, y: 100, timestamp: 7000 },      //   2
+      { x: 100, y: 100, timestamp: 8000 },      //   2
+      { x: 100, y: 100, timestamp: 9000 },      //    3
+      { x: 100, y: 100, timestamp: 10000 },     //    3
+      { x: 100, y: 100, timestamp: 11000 },     //    3
+      { x: 100, y: 100, timestamp: 12000 },     //     4
+      { x: 100, y: 100, timestamp: 13000 },     //     4
+      { x: 100, y: 100, timestamp: 14000 },     //     4
+    ];
+
+    let hullSeries = new TimeHullSeries({
+      points: points,
+      period: 2000,
+      timestep: 2001,
+      includeIncomplete: false,
+    });
+
+    let hulls = hullSeries.getHulls();
+
+    expect(hulls.length).to.equal(5);
+    expect(hulls[0].startIndex).to.equal(0);
+    expect(hulls[1].startIndex).to.equal(3);
+    expect(hulls[2].startIndex).to.equal(6);
+    expect(hulls[3].startIndex).to.equal(9);
+    expect(hulls[4].startIndex).to.equal(12);
+
+    expect(hulls[0].endIndex).to.equal(2);
+    expect(hulls[1].endIndex).to.equal(5);
+    expect(hulls[2].endIndex).to.equal(8);
+    expect(hulls[3].endIndex).to.equal(11);
+    expect(hulls[4].endIndex).to.equal(14);
+  });
 });
