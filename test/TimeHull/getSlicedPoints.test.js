@@ -18,7 +18,7 @@ describe('TimeHull.getSlicedPoints()', () => {
       { x: 100, y: 200, timestamp: 3000 },
     ]);
 
-    expect(timeHull.getSlicedPoints()).to.eql(timeHull.seriesPoints);
+    expect(timeHull.getSlicedPoints()).to.eql(timeHull.seriesPoints());
   });
 
   it('gets the x coordinates only', () => {
