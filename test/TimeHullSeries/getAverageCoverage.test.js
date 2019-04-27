@@ -29,7 +29,6 @@ describe('TimeHullSeries.getAverageCoverage()', () => {
       points: points,
       period: 5000,
       timestep: 0,
-      pointTrailLength: 10,
       width: 1000,
       height: 1000,
     });

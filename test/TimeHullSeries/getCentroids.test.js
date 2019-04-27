@@ -102,7 +102,7 @@ describe('TimeHullSeries.getCentroids()', () => {
     let centroids = new TimeHullSeries({
       points: points,
       period: 5000,
-    }).getCentroids({ endIndex: 4 });
+    }).getCentroids({ endHullIndex: 4 });
 
     expect(centroids.length).to.equal(5);
     expect(centroids).to.eql([

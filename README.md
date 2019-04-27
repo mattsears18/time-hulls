@@ -25,7 +25,6 @@ Generates series of convex hulls for periods of timestamped, 2D point data
       period: 5000,
       timestep: 0,
       includeIncomplete: true,
-      pointTrailLength: 10,
     })
 
     series.getHulls()
