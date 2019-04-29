@@ -1,5 +1,5 @@
-const TimeHull = require('../../lib/TimeHull');
-var expect     = require('chai').expect;
+const TimeHull = require('../../lib/TimeHull')
+var expect     = require('chai').expect
 
 describe('TimeHull.coverageDuration()', () => {
   it('has a coverageDuration', () => {
@@ -13,12 +13,12 @@ describe('TimeHull.coverageDuration()', () => {
       { x: 50,  y: 50,  timestamp: 10000 },
       { x: 100, y: 100, timestamp: 12000 },
       { x: 100, y: 100, timestamp: 14000 },
-    ];
+    ]
 
-    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 1 }).coverageDuration({})).to.equal(0);
-    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 3 }).coverageDuration({})).to.equal(20);
-    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 6 }).coverageDuration({})).to.equal(10);
-  });
+    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 1 }).coverageDuration({})).to.equal(0)
+    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 3 }).coverageDuration({})).to.equal(20)
+    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 6 }).coverageDuration({})).to.equal(10)
+  })
 
   it('has a coverageDuration without passing options', () => {
     let points = [
@@ -31,10 +31,10 @@ describe('TimeHull.coverageDuration()', () => {
       { x: 50,  y: 50,  timestamp: 10000 },
       { x: 100, y: 100, timestamp: 12000 },
       { x: 100, y: 100, timestamp: 14000 },
-    ];
+    ]
 
-    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 1 }).coverageDuration()).to.equal(0);
-    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 3 }).coverageDuration()).to.equal(20);
-    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 6 }).coverageDuration()).to.equal(10);
-  });
-});
+    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 1 }).coverageDuration()).to.equal(0)
+    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 3 }).coverageDuration()).to.equal(20)
+    expect(new TimeHull({ seriesPoints: points, width: 2000, height: 1000, startIndex: 0, endIndex: 6 }).coverageDuration()).to.equal(10)
+  })
+})

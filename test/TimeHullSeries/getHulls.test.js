@@ -1,5 +1,5 @@
-const TimeHullSeries = require('../../lib/TimeHullSeries');
-var expect     = require('chai').expect;
+const TimeHullSeries = require('../../lib/TimeHullSeries')
+var expect     = require('chai').expect
 
 describe('TimeHullSeries.getHulls()', () => {
   it('gets no hulls when            period > duration, includeIncomplete = false', () => {
@@ -16,18 +16,18 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 9000 },      //
       { x: 100, y: 100, timestamp: 10000 },     //
       { x: 100, y: 100, timestamp: 11000 },     //
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 20000,
       includeIncomplete: false,
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(0);
-  });
+    expect(hulls.length).to.equal(0)
+  })
 
   it('gets hulls when timestep = 0, period < duration, includeIncomplete = false (instantaneous slide)', () => {
     let points = [
@@ -46,39 +46,39 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 12000 },     //        789
       { x: 100, y: 100, timestamp: 13000 },     //         89
       { x: 100, y: 100, timestamp: 14000 },     //          9
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 5000,
       includeIncomplete: false,
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(10);
-    expect(hulls[0].startIndex).to.equal(0);
-    expect(hulls[1].startIndex).to.equal(1);
-    expect(hulls[2].startIndex).to.equal(2);
-    expect(hulls[3].startIndex).to.equal(3);
-    expect(hulls[4].startIndex).to.equal(4);
-    expect(hulls[5].startIndex).to.equal(5);
-    expect(hulls[6].startIndex).to.equal(6);
-    expect(hulls[7].startIndex).to.equal(7);
-    expect(hulls[8].startIndex).to.equal(8);
-    expect(hulls[9].startIndex).to.equal(9);
+    expect(hulls.length).to.equal(10)
+    expect(hulls[0].startIndex).to.equal(0)
+    expect(hulls[1].startIndex).to.equal(1)
+    expect(hulls[2].startIndex).to.equal(2)
+    expect(hulls[3].startIndex).to.equal(3)
+    expect(hulls[4].startIndex).to.equal(4)
+    expect(hulls[5].startIndex).to.equal(5)
+    expect(hulls[6].startIndex).to.equal(6)
+    expect(hulls[7].startIndex).to.equal(7)
+    expect(hulls[8].startIndex).to.equal(8)
+    expect(hulls[9].startIndex).to.equal(9)
 
-    expect(hulls[0].endIndex).to.equal(5);
-    expect(hulls[1].endIndex).to.equal(6);
-    expect(hulls[2].endIndex).to.equal(7);
-    expect(hulls[3].endIndex).to.equal(8);
-    expect(hulls[4].endIndex).to.equal(9);
-    expect(hulls[5].endIndex).to.equal(10);
-    expect(hulls[6].endIndex).to.equal(11);
-    expect(hulls[7].endIndex).to.equal(12);
-    expect(hulls[8].endIndex).to.equal(13);
-    expect(hulls[9].endIndex).to.equal(14);
-  });
+    expect(hulls[0].endIndex).to.equal(5)
+    expect(hulls[1].endIndex).to.equal(6)
+    expect(hulls[2].endIndex).to.equal(7)
+    expect(hulls[3].endIndex).to.equal(8)
+    expect(hulls[4].endIndex).to.equal(9)
+    expect(hulls[5].endIndex).to.equal(10)
+    expect(hulls[6].endIndex).to.equal(11)
+    expect(hulls[7].endIndex).to.equal(12)
+    expect(hulls[8].endIndex).to.equal(13)
+    expect(hulls[9].endIndex).to.equal(14)
+  })
 
   it('gets hulls when timestep = 0, period < duration, includeIncomplete = true  (instantaneous slide with initial incomplete hulls)', () => {
     let points = [
@@ -94,39 +94,39 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 9000 },      //        789
       { x: 100, y: 100, timestamp: 10000 },     //         89
       { x: 100, y: 100, timestamp: 11000 },     //          9
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 5000,
       includeIncomplete: true,
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(10);
-    expect(hulls[0].startIndex).to.equal(0);
-    expect(hulls[1].startIndex).to.equal(0);
-    expect(hulls[2].startIndex).to.equal(0);
-    expect(hulls[3].startIndex).to.equal(0);
-    expect(hulls[4].startIndex).to.equal(1);
-    expect(hulls[5].startIndex).to.equal(2);
-    expect(hulls[6].startIndex).to.equal(3);
-    expect(hulls[7].startIndex).to.equal(4);
-    expect(hulls[8].startIndex).to.equal(5);
-    expect(hulls[9].startIndex).to.equal(6);
+    expect(hulls.length).to.equal(10)
+    expect(hulls[0].startIndex).to.equal(0)
+    expect(hulls[1].startIndex).to.equal(0)
+    expect(hulls[2].startIndex).to.equal(0)
+    expect(hulls[3].startIndex).to.equal(0)
+    expect(hulls[4].startIndex).to.equal(1)
+    expect(hulls[5].startIndex).to.equal(2)
+    expect(hulls[6].startIndex).to.equal(3)
+    expect(hulls[7].startIndex).to.equal(4)
+    expect(hulls[8].startIndex).to.equal(5)
+    expect(hulls[9].startIndex).to.equal(6)
 
-    expect(hulls[0].endIndex).to.equal(2);
-    expect(hulls[1].endIndex).to.equal(3);
-    expect(hulls[2].endIndex).to.equal(4);
-    expect(hulls[3].endIndex).to.equal(5);
-    expect(hulls[4].endIndex).to.equal(6);
-    expect(hulls[5].endIndex).to.equal(7);
-    expect(hulls[6].endIndex).to.equal(8);
-    expect(hulls[7].endIndex).to.equal(9);
-    expect(hulls[8].endIndex).to.equal(10);
-    expect(hulls[9].endIndex).to.equal(11);
-  });
+    expect(hulls[0].endIndex).to.equal(2)
+    expect(hulls[1].endIndex).to.equal(3)
+    expect(hulls[2].endIndex).to.equal(4)
+    expect(hulls[3].endIndex).to.equal(5)
+    expect(hulls[4].endIndex).to.equal(6)
+    expect(hulls[5].endIndex).to.equal(7)
+    expect(hulls[6].endIndex).to.equal(8)
+    expect(hulls[7].endIndex).to.equal(9)
+    expect(hulls[8].endIndex).to.equal(10)
+    expect(hulls[9].endIndex).to.equal(11)
+  })
 
   it('gets hulls when timestep > 0, period < duration, includeIncomplete = false (instantaneous step)', () => {
     let points = [
@@ -145,24 +145,24 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 12000 },     //  1
       { x: 100, y: 100, timestamp: 13000 },     //  1
       { x: 100, y: 100, timestamp: 14000 },     //  1
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 5000,
       timestep: 5000,
       includeIncomplete: false,
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(2);
-    expect(hulls[0].startIndex).to.equal(4);
-    expect(hulls[1].startIndex).to.equal(9);
+    expect(hulls.length).to.equal(2)
+    expect(hulls[0].startIndex).to.equal(4)
+    expect(hulls[1].startIndex).to.equal(9)
 
-    expect(hulls[0].endIndex).to.equal(9);
-    expect(hulls[1].endIndex).to.equal(14);
-  });
+    expect(hulls[0].endIndex).to.equal(9)
+    expect(hulls[1].endIndex).to.equal(14)
+  })
 
   it('gets hulls when timestep > 0, period < duration, includeIncomplete = true  (instantaneous step  with initial incomplete hull)', () => {
     let points = [
@@ -181,26 +181,26 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 12000 },     //   2
       { x: 100, y: 100, timestamp: 13000 },     //   2
       { x: 100, y: 100, timestamp: 14000 },     //   2
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 5000,
       timestep: 5000,
       includeIncomplete: true,
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(3);
-    expect(hulls[0].startIndex).to.equal(0);
-    expect(hulls[1].startIndex).to.equal(4);
-    expect(hulls[2].startIndex).to.equal(9);
+    expect(hulls.length).to.equal(3)
+    expect(hulls[0].startIndex).to.equal(0)
+    expect(hulls[1].startIndex).to.equal(4)
+    expect(hulls[2].startIndex).to.equal(9)
 
-    expect(hulls[0].endIndex).to.equal(4);
-    expect(hulls[1].endIndex).to.equal(9);
-    expect(hulls[2].endIndex).to.equal(14);
-  });
+    expect(hulls[0].endIndex).to.equal(4)
+    expect(hulls[1].endIndex).to.equal(9)
+    expect(hulls[2].endIndex).to.equal(14)
+  })
 
   it('gets hulls when timestep = 0, period > duration, includeIncomplete = true  (continuous slide)', () => {
     let points = [
@@ -216,39 +216,39 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 9000 },      //        789
       { x: 100, y: 100, timestamp: 10000 },     //         89
       { x: 100, y: 100, timestamp: 11000 },     //          9
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 20000,
       includeIncomplete: true,
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(10);
-    expect(hulls[0].startIndex).to.equal(0);
-    expect(hulls[1].startIndex).to.equal(0);
-    expect(hulls[2].startIndex).to.equal(0);
-    expect(hulls[3].startIndex).to.equal(0);
-    expect(hulls[4].startIndex).to.equal(0);
-    expect(hulls[5].startIndex).to.equal(0);
-    expect(hulls[6].startIndex).to.equal(0);
-    expect(hulls[7].startIndex).to.equal(0);
-    expect(hulls[8].startIndex).to.equal(0);
-    expect(hulls[9].startIndex).to.equal(0);
+    expect(hulls.length).to.equal(10)
+    expect(hulls[0].startIndex).to.equal(0)
+    expect(hulls[1].startIndex).to.equal(0)
+    expect(hulls[2].startIndex).to.equal(0)
+    expect(hulls[3].startIndex).to.equal(0)
+    expect(hulls[4].startIndex).to.equal(0)
+    expect(hulls[5].startIndex).to.equal(0)
+    expect(hulls[6].startIndex).to.equal(0)
+    expect(hulls[7].startIndex).to.equal(0)
+    expect(hulls[8].startIndex).to.equal(0)
+    expect(hulls[9].startIndex).to.equal(0)
 
-    expect(hulls[0].endIndex).to.equal(2);
-    expect(hulls[1].endIndex).to.equal(3);
-    expect(hulls[2].endIndex).to.equal(4);
-    expect(hulls[3].endIndex).to.equal(5);
-    expect(hulls[4].endIndex).to.equal(6);
-    expect(hulls[5].endIndex).to.equal(7);
-    expect(hulls[6].endIndex).to.equal(8);
-    expect(hulls[7].endIndex).to.equal(9);
-    expect(hulls[8].endIndex).to.equal(10);
-    expect(hulls[9].endIndex).to.equal(11);
-  });
+    expect(hulls[0].endIndex).to.equal(2)
+    expect(hulls[1].endIndex).to.equal(3)
+    expect(hulls[2].endIndex).to.equal(4)
+    expect(hulls[3].endIndex).to.equal(5)
+    expect(hulls[4].endIndex).to.equal(6)
+    expect(hulls[5].endIndex).to.equal(7)
+    expect(hulls[6].endIndex).to.equal(8)
+    expect(hulls[7].endIndex).to.equal(9)
+    expect(hulls[8].endIndex).to.equal(10)
+    expect(hulls[9].endIndex).to.equal(11)
+  })
 
   it('gets hulls when timestep > 0, period > duration, includeIncomplete = true  (continuous step)', () => {
     let points = [
@@ -267,26 +267,26 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 12000 },     //   2
       { x: 100, y: 100, timestamp: 13000 },     //   2
       { x: 100, y: 100, timestamp: 14000 },     //   2
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 20000,
       timestep: 5000,
       includeIncomplete: true
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(3);
-    expect(hulls[0].startIndex).to.equal(0);
-    expect(hulls[1].startIndex).to.equal(0);
-    expect(hulls[2].startIndex).to.equal(0);
+    expect(hulls.length).to.equal(3)
+    expect(hulls[0].startIndex).to.equal(0)
+    expect(hulls[1].startIndex).to.equal(0)
+    expect(hulls[2].startIndex).to.equal(0)
 
-    expect(hulls[0].endIndex).to.equal(4);
-    expect(hulls[1].endIndex).to.equal(9);
-    expect(hulls[2].endIndex).to.equal(14);
-  });
+    expect(hulls[0].endIndex).to.equal(4)
+    expect(hulls[1].endIndex).to.equal(9)
+    expect(hulls[2].endIndex).to.equal(14)
+  })
 
   it('gets non-everlapping step hulls with an incomplete initial hull', () => {
     let points = [
@@ -305,26 +305,26 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 12000 },     //   2
       { x: 100, y: 100, timestamp: 13000 },     //   2
       { x: 100, y: 100, timestamp: 14000 },     //   2
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 5000,
       timestep: 5001,
       includeIncomplete: true,
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(3);
-    expect(hulls[0].startIndex).to.equal(0);
-    expect(hulls[1].startIndex).to.equal(3);
-    expect(hulls[2].startIndex).to.equal(9);
+    expect(hulls.length).to.equal(3)
+    expect(hulls[0].startIndex).to.equal(0)
+    expect(hulls[1].startIndex).to.equal(3)
+    expect(hulls[2].startIndex).to.equal(9)
 
-    expect(hulls[0].endIndex).to.equal(2);
-    expect(hulls[1].endIndex).to.equal(8);
-    expect(hulls[2].endIndex).to.equal(14);
-  });
+    expect(hulls[0].endIndex).to.equal(2)
+    expect(hulls[1].endIndex).to.equal(8)
+    expect(hulls[2].endIndex).to.equal(14)
+  })
 
   it('gets non-everlapping step hulls', () => {
     let points = [
@@ -343,28 +343,28 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 12000 },     //     4
       { x: 100, y: 100, timestamp: 13000 },     //     4
       { x: 100, y: 100, timestamp: 14000 },     //     4
-    ];
+    ]
 
     let hullSeries = new TimeHullSeries({
       points: points,
       period: 2000,
       timestep: 2001,
       includeIncomplete: false,
-    });
+    })
 
-    let hulls = hullSeries.getHulls();
+    let hulls = hullSeries.getHulls()
 
-    expect(hulls.length).to.equal(5);
-    expect(hulls[0].startIndex).to.equal(0);
-    expect(hulls[1].startIndex).to.equal(3);
-    expect(hulls[2].startIndex).to.equal(6);
-    expect(hulls[3].startIndex).to.equal(9);
-    expect(hulls[4].startIndex).to.equal(12);
+    expect(hulls.length).to.equal(5)
+    expect(hulls[0].startIndex).to.equal(0)
+    expect(hulls[1].startIndex).to.equal(3)
+    expect(hulls[2].startIndex).to.equal(6)
+    expect(hulls[3].startIndex).to.equal(9)
+    expect(hulls[4].startIndex).to.equal(12)
 
-    expect(hulls[0].endIndex).to.equal(2);
-    expect(hulls[1].endIndex).to.equal(5);
-    expect(hulls[2].endIndex).to.equal(8);
-    expect(hulls[3].endIndex).to.equal(11);
-    expect(hulls[4].endIndex).to.equal(14);
-  });
-});
+    expect(hulls[0].endIndex).to.equal(2)
+    expect(hulls[1].endIndex).to.equal(5)
+    expect(hulls[2].endIndex).to.equal(8)
+    expect(hulls[3].endIndex).to.equal(11)
+    expect(hulls[4].endIndex).to.equal(14)
+  })
+})

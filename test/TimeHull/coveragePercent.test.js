@@ -1,5 +1,5 @@
-const TimeHull = require('../../lib/TimeHull');
-var expect     = require('chai').expect;
+const TimeHull = require('../../lib/TimeHull')
+var expect     = require('chai').expect
 
 describe('TimeHull.coveragePercent()', () => {
   it('gets coveragePercent with inner points', () => {
@@ -12,11 +12,11 @@ describe('TimeHull.coveragePercent()', () => {
       { x: 200, y: 190, timestamp: 5000 },
       { x: 110, y: 170, timestamp: 6000 },
       { x: 140, y: 155, timestamp: 7000 },
-    ];
+    ]
 
-    let timeHull = new TimeHull({ seriesPoints: points, width: 2000, height: 1000 });
-    expect(timeHull.coveragePercent({})).to.equal(0.5);
-  });
+    let timeHull = new TimeHull({ seriesPoints: points, width: 2000, height: 1000 })
+    expect(timeHull.coveragePercent({})).to.equal(0.5)
+  })
 
   it('gets coveragePercent without passing options', () => {
     let points = [
@@ -28,9 +28,9 @@ describe('TimeHull.coveragePercent()', () => {
       { x: 200, y: 190, timestamp: 5000 },
       { x: 110, y: 170, timestamp: 6000 },
       { x: 140, y: 155, timestamp: 7000 },
-    ];
+    ]
 
-    let timeHull = new TimeHull({ seriesPoints: points, width: 2000, height: 1000 });
-    expect(timeHull.coveragePercent()).to.equal(0.5);
-  });
-});
+    let timeHull = new TimeHull({ seriesPoints: points, width: 2000, height: 1000 })
+    expect(timeHull.coveragePercent()).to.equal(0.5)
+  })
+})

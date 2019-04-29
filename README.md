@@ -10,11 +10,11 @@ Generates series of convex hulls for periods of timestamped, 2D point data
     npm install time-hulls
 
 ## Usage
-    import { TimeHullSeries } from 'time-hulls';
+    import { TimeHullSeries } from 'time-hulls'
 
     // or
 
-    const TimeHullSeries = require("time-hulls").TimeHullSeries;
+    const TimeHullSeries = require("time-hulls").TimeHullSeries
 &nbsp;
 
     let points = []
