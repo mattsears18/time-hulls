@@ -367,4 +367,33 @@ describe('TimeHullSeries.getHulls()', () => {
     expect(hulls[3].endIndex).to.equal(11)
     expect(hulls[4].endIndex).to.equal(14)
   })
+
+  it('returns saved hull results', () => {
+    let points = [
+      { x: 100, y: 100, timestamp: 0 },         // 0
+      { x: 100, y: 100, timestamp: 1000 },      // 0
+      { x: 100, y: 100, timestamp: 2000 },      // 0
+      { x: 100, y: 100, timestamp: 3000 },      //  1
+      { x: 100, y: 100, timestamp: 4000 },      //  1
+      { x: 100, y: 100, timestamp: 5000 },      //  1
+      { x: 100, y: 100, timestamp: 6000 },      //   2
+      { x: 100, y: 100, timestamp: 7000 },      //   2
+      { x: 100, y: 100, timestamp: 8000 },      //   2
+      { x: 100, y: 100, timestamp: 9000 },      //    3
+      { x: 100, y: 100, timestamp: 10000 },     //    3
+      { x: 100, y: 100, timestamp: 11000 },     //    3
+      { x: 100, y: 100, timestamp: 12000 },     //     4
+      { x: 100, y: 100, timestamp: 13000 },     //     4
+      { x: 100, y: 100, timestamp: 14000 },     //     4
+    ]
+
+    let hullSeries = new TimeHullSeries({
+      points: points,
+      period: 5000,
+    })
+
+    hullSeries.hulls = ['previously calculated hulls']
+
+    expect(hullSeries.getHulls()).to.eql(['previously calculated hulls'])
+  })
 })
