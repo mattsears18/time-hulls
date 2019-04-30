@@ -28,4 +28,23 @@ describe('TimeHullSeries.getDuration()', () => {
     let series = new TimeHullSeries({ points: points, period: 5000 })
     expect(series.getDuration()).to.equal(0)
   })
+
+  it('gets a previously saved duration', () => {
+    let points = [
+      { x: 100, y: 400, timestamp: 0 },
+      { x: 200, y: 300, timestamp: 0 },
+      { x: 300, y: 200, timestamp: 0 },
+      { x: 400, y: 100, timestamp: 0 },
+      { x: 500, y: 700, timestamp: 0 },
+    ]
+
+    let series = new TimeHullSeries({
+      points: points,
+      period: 5000,
+      timestep: 0,
+    })
+
+    series.duration = 1337
+    expect(series.getDuration()).to.equal(1337)
+  })
 })
