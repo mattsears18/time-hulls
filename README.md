@@ -29,3 +29,6 @@ Generates series of convex hulls for periods of timestamped, 2D point data
 
     series.getHulls()
     series.getCentroids()
+
+## Full Documentation
+https://mattsears18.github.io/time-hulls/
