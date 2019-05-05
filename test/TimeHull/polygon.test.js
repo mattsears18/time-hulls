@@ -119,8 +119,8 @@ describe('TimeHull.polygon()', () => {
     let timeHull = new TimeHull({ seriesPoints: points })
     expect(timeHull.polygon({})).to.eql([
       { x: 100, y: 100 },
-      { x: 200, y: 100 },
       { x: 100, y: 200 },
+      { x: 200, y: 100 },
       { x: 100, y: 100 },
     ])
   })
