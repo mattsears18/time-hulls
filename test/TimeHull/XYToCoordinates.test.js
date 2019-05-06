@@ -1,23 +1,20 @@
-const TimeHull = require('../../lib/TimeHull')
-var expect     = require('chai').expect
+const { expect } = require('chai');
+const TimeHull = require('../../lib/TimeHull');
 
 describe('TimeHull.XYToCoordinates()', () => {
   it('converts the XY to coorindates', () => {
-    let dummyPoints = [{ x: 100, y: 100, timestamp: 0 }]
-    let timeHull = new TimeHull({ seriesPoints: dummyPoints })
-
-    let points = [
+    const points = [
       { x: 100, y: 100 },
       { x: 200, y: 100 },
       { x: 200, y: 200 },
       { x: 100, y: 200 },
-    ]
+    ];
 
-    expect(timeHull.XYToCoordinates(points)).to.eql([
-      [ 100, 100 ],
-      [ 200, 100 ],
-      [ 200, 200 ],
-      [ 100, 200 ],
-    ])
-  })
-})
+    expect(TimeHull.XYToCoordinates(points)).to.eql([
+      [100, 100],
+      [200, 100],
+      [200, 200],
+      [100, 200],
+    ]);
+  });
+});
