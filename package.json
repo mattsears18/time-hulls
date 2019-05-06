@@ -1,6 +1,6 @@
 {
   "name": "time-hulls",
-  "version": "0.0.89",
+  "version": "0.0.90",
   "description": "Calculates a series of convex hulls for periods of timestamped 2D point data",
   "license": "MIT",
   "repository": "mattsears18/time-hulls",
@@ -9,7 +9,8 @@
     "test": "nyc mocha --recursive",
     "testWatch": "mocha --recursive -w",
     "coverage": "nyc report",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "gulp"
   },
   "keywords": [
     "convex",
@@ -20,7 +21,7 @@
   "dependencies": {
     "area-polygon": "^1.0.1",
     "hull.js": "git://github.com/mattsears18/hull.git#length-3-pointsets",
-    "jstat": "^1.7.1"
+    "jStat": "^1.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
