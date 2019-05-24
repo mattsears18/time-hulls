@@ -7,7 +7,7 @@ describe('TimeHull.centroid()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -19,7 +19,7 @@ describe('TimeHull.centroid()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -33,7 +33,7 @@ describe('TimeHull.centroid()', () => {
       { x: 200, y: 200, timestamp: 2000 },
       { x: 100, y: 200, timestamp: 3000 },
       { x: 150, y: 120, timestamp: 3000 },
-      { x: 110, y: 190, timestamp: 3000 },
+      { x: 110, y: 190, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -41,9 +41,7 @@ describe('TimeHull.centroid()', () => {
   });
 
   it('only has one point', () => {
-    const points = [
-      { x: 1337, y: 137, timestamp: 0 },
-    ];
+    const points = [{ x: 1337, y: 137, timestamp: 0 }];
 
     const timeHull = new TimeHull({ seriesPoints: points });
     expect(timeHull.centroid()).to.eql({ x: 1337, y: 137 });
@@ -53,7 +51,7 @@ describe('TimeHull.centroid()', () => {
     const points = [
       { x: 1337, y: 137, timestamp: 0 },
       { x: 1337, y: 137, timestamp: 0 },
-      { x: 1337, y: 137, timestamp: 0 },
+      { x: 1337, y: 137, timestamp: 0 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -63,7 +61,7 @@ describe('TimeHull.centroid()', () => {
   it('only has two points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
-      { x: 200, y: 100, timestamp: 1000 },
+      { x: 200, y: 100, timestamp: 1000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -74,7 +72,7 @@ describe('TimeHull.centroid()', () => {
     const points = [
       { x: 0, y: 0, timestamp: 0 },
       { x: 100, y: 0, timestamp: 1000 },
-      { x: 50, y: 300, timestamp: 2000 },
+      { x: 50, y: 300, timestamp: 2000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -85,7 +83,7 @@ describe('TimeHull.centroid()', () => {
     const points = [
       { x: 0, y: 0, timestamp: 0 },
       { x: 100, y: 0, timestamp: 1000 },
-      { x: 50, y: 300, timestamp: 2000 },
+      { x: 50, y: 300, timestamp: 2000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });

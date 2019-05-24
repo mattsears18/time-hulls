@@ -4,33 +4,33 @@ const uglify = require('gulp-uglify');
 const gulpDocumentation = require('gulp-documentation');
 
 export function documentation(cb) {
-  gulp.src('./index.js')
+  gulp
+    .src('./index.js')
     .pipe(gulpDocumentation('html'))
     .pipe(gulp.dest('docs'));
   cb();
 }
 
 export function compress(cb) {
-  gulp.src('lib/**/*.js')
-    .pipe(babel({
-      presets: ['@babel/env'],
-    }))
+  gulp
+    .src('lib/**/*.js')
+    .pipe(
+      babel({
+        presets: ['@babel/env']
+      })
+    )
     .pipe(uglify())
     .pipe(gulp.dest('./dist/'));
   cb();
 }
 
-const defaultTasks = [
-  documentation,
-  compress,
-];
+const defaultTasks = [documentation, compress];
 
 export function watch() {
   gulp.watch('lib/*.js', gulp.parallel(defaultTasks));
 }
 
 export default gulp.parallel(defaultTasks);
-
 
 //
 // gulp.task('minify', () => {

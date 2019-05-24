@@ -4,17 +4,21 @@
 ![npm bundle size](https://img.shields.io/bundlephobia/min/time-hulls.svg)
 
 # time-hulls
+
 Generates series of convex hulls for periods of timestamped, 2D point data
 
 ## Install
+
     npm install time-hulls
 
 ## Usage
+
     import { TimeHullSeries } from 'time-hulls'
 
     // or
 
     const TimeHullSeries = require("time-hulls").TimeHullSeries
+
 &nbsp;
 
     let points = []
@@ -31,4 +35,5 @@ Generates series of convex hulls for periods of timestamped, 2D point data
     series.getCentroids()
 
 ## Full Documentation
+
 https://mattsears18.github.io/time-hulls/

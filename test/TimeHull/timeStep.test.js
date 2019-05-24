@@ -14,7 +14,7 @@ describe('TimeHull.timestep()', () => {
       { x: 100, y: 100, timestamp: 1000 },
       { x: 100, y: 100, timestamp: 2000 },
       { x: 100, y: 100, timestamp: 3000 },
-      { x: 100, y: 100, timestamp: 3500 },
+      { x: 100, y: 100, timestamp: 3500 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });

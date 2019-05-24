@@ -7,7 +7,7 @@ describe('TimeHull.getPoints()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -15,7 +15,7 @@ describe('TimeHull.getPoints()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ]);
 
     expect(timeHull.getPoints()).to.eql(timeHull.seriesPoints());
@@ -26,7 +26,7 @@ describe('TimeHull.getPoints()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -38,7 +38,7 @@ describe('TimeHull.getPoints()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -50,10 +50,15 @@ describe('TimeHull.getPoints()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.getPoints('z')).to.eql([undefined, undefined, undefined, undefined]);
+    expect(timeHull.getPoints('z')).to.eql([
+      undefined,
+      undefined,
+      undefined,
+      undefined
+    ]);
   });
 });

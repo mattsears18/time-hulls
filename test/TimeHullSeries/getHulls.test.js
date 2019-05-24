@@ -15,13 +15,13 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 8000 }, //
       { x: 100, y: 100, timestamp: 9000 }, //
       { x: 100, y: 100, timestamp: 10000 }, //
-      { x: 100, y: 100, timestamp: 11000 }, //
+      { x: 100, y: 100, timestamp: 11000 } //
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 20000,
-      includeIncomplete: false,
+      includeIncomplete: false
     });
 
     const hulls = hullSeries.getHulls();
@@ -45,13 +45,13 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 11000 }, //       6789
       { x: 100, y: 100, timestamp: 12000 }, //        789
       { x: 100, y: 100, timestamp: 13000 }, //         89
-      { x: 100, y: 100, timestamp: 14000 }, //          9
+      { x: 100, y: 100, timestamp: 14000 } //          9
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 5000,
-      includeIncomplete: false,
+      includeIncomplete: false
     });
 
     const hulls = hullSeries.getHulls();
@@ -93,13 +93,13 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 8000 }, //       6789
       { x: 100, y: 100, timestamp: 9000 }, //        789
       { x: 100, y: 100, timestamp: 10000 }, //         89
-      { x: 100, y: 100, timestamp: 11000 }, //          9
+      { x: 100, y: 100, timestamp: 11000 } //          9
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 5000,
-      includeIncomplete: true,
+      includeIncomplete: true
     });
 
     const hulls = hullSeries.getHulls();
@@ -144,14 +144,14 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 11000 }, //  1
       { x: 100, y: 100, timestamp: 12000 }, //  1
       { x: 100, y: 100, timestamp: 13000 }, //  1
-      { x: 100, y: 100, timestamp: 14000 }, //  1
+      { x: 100, y: 100, timestamp: 14000 } //  1
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 5000,
       timestep: 5000,
-      includeIncomplete: false,
+      includeIncomplete: false
     });
 
     const hulls = hullSeries.getHulls();
@@ -180,14 +180,14 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 11000 }, //   2
       { x: 100, y: 100, timestamp: 12000 }, //   2
       { x: 100, y: 100, timestamp: 13000 }, //   2
-      { x: 100, y: 100, timestamp: 14000 }, //   2
+      { x: 100, y: 100, timestamp: 14000 } //   2
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 5000,
       timestep: 5000,
-      includeIncomplete: true,
+      includeIncomplete: true
     });
 
     const hulls = hullSeries.getHulls();
@@ -215,13 +215,13 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 8000 }, //       6789
       { x: 100, y: 100, timestamp: 9000 }, //        789
       { x: 100, y: 100, timestamp: 10000 }, //         89
-      { x: 100, y: 100, timestamp: 11000 }, //          9
+      { x: 100, y: 100, timestamp: 11000 } //          9
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 20000,
-      includeIncomplete: true,
+      includeIncomplete: true
     });
 
     const hulls = hullSeries.getHulls();
@@ -266,14 +266,14 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 11000 }, //   2
       { x: 100, y: 100, timestamp: 12000 }, //   2
       { x: 100, y: 100, timestamp: 13000 }, //   2
-      { x: 100, y: 100, timestamp: 14000 }, //   2
+      { x: 100, y: 100, timestamp: 14000 } //   2
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 20000,
       timestep: 5000,
-      includeIncomplete: true,
+      includeIncomplete: true
     });
 
     const hulls = hullSeries.getHulls();
@@ -304,14 +304,14 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 11000 }, //   2
       { x: 100, y: 100, timestamp: 12000 }, //   2
       { x: 100, y: 100, timestamp: 13000 }, //   2
-      { x: 100, y: 100, timestamp: 14000 }, //   2
+      { x: 100, y: 100, timestamp: 14000 } //   2
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 5000,
       timestep: 5001,
-      includeIncomplete: true,
+      includeIncomplete: true
     });
 
     const hulls = hullSeries.getHulls();
@@ -342,14 +342,14 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 11000 }, //    3
       { x: 100, y: 100, timestamp: 12000 }, //     4
       { x: 100, y: 100, timestamp: 13000 }, //     4
-      { x: 100, y: 100, timestamp: 14000 }, //     4
+      { x: 100, y: 100, timestamp: 14000 } //     4
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
       period: 2000,
       timestep: 2001,
-      includeIncomplete: false,
+      includeIncomplete: false
     });
 
     const hulls = hullSeries.getHulls();
@@ -384,12 +384,12 @@ describe('TimeHullSeries.getHulls()', () => {
       { x: 100, y: 100, timestamp: 11000 }, //    3
       { x: 100, y: 100, timestamp: 12000 }, //     4
       { x: 100, y: 100, timestamp: 13000 }, //     4
-      { x: 100, y: 100, timestamp: 14000 }, //     4
+      { x: 100, y: 100, timestamp: 14000 } //     4
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
-      period: 5000,
+      period: 5000
     });
 
     hullSeries.hulls = ['previously calculated hulls'];

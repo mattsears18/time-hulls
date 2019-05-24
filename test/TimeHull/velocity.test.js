@@ -7,7 +7,7 @@ describe('TimeHull.velocity()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2900 },
-      { x: -100, y: -200, timestamp: 3000 }, // distance 300 left, 400 down, 500 total (hypotenuse)
+      { x: -100, y: -200, timestamp: 3000 } // distance 300 left, 400 down, 500 total (hypotenuse)
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -19,7 +19,7 @@ describe('TimeHull.velocity()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2900 },
-      { x: -100, y: -200, timestamp: 3000 }, // distance 300 left, 400 down, 500 total (hypotenuse)
+      { x: -100, y: -200, timestamp: 3000 } // distance 300 left, 400 down, 500 total (hypotenuse)
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -31,7 +31,7 @@ describe('TimeHull.velocity()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2900 },
-      { x: -100, y: -200, timestamp: 3000 }, // distance 300 left, 400 down, 500 total (hypotenuse)
+      { x: -100, y: -200, timestamp: 3000 } // distance 300 left, 400 down, 500 total (hypotenuse)
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -43,7 +43,7 @@ describe('TimeHull.velocity()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2900 },
-      { x: 200, y: 200, timestamp: 3000 }, // distance 300 left, 400 down, 500 total (hypotenuse)
+      { x: 200, y: 200, timestamp: 3000 } // distance 300 left, 400 down, 500 total (hypotenuse)
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });

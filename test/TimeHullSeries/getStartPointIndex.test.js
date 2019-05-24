@@ -13,12 +13,12 @@ describe('TimeHullSeries.getStartPointIndex()', () => {
       { x: 100, y: 100, timestamp: 6000 },
       { x: 100, y: 100, timestamp: 7000 },
       { x: 100, y: 100, timestamp: 8001 },
-      { x: 100, y: 100, timestamp: 9000 },
+      { x: 100, y: 100, timestamp: 9000 }
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
-      period: 5000,
+      period: 5000
     });
 
     expect(hullSeries.getStartPointIndex(9)).to.equal(4);
@@ -37,12 +37,12 @@ describe('TimeHullSeries.getStartPointIndex()', () => {
       { x: 100, y: 100, timestamp: 6000 },
       { x: 100, y: 100, timestamp: 7000 },
       { x: 100, y: 100, timestamp: 8001 },
-      { x: 100, y: 100, timestamp: 9000 },
+      { x: 100, y: 100, timestamp: 9000 }
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
-      period: 5000,
+      period: 5000
     });
 
     expect(hullSeries.getStartPointIndex(2)).to.be.an('undefined');
@@ -53,15 +53,21 @@ describe('TimeHullSeries.getStartPointIndex()', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
-      { x: 100, y: 100, timestamp: 2000 },
+      { x: 100, y: 100, timestamp: 2000 }
     ];
     const hullSeries = new TimeHullSeries({
       points,
-      period: 5000,
+      period: 5000
     });
 
-    expect(() => { hullSeries.getStartPointIndex(-1); }).to.throw('endIndexOutOfBounds');
-    expect(() => { hullSeries.getStartPointIndex(3); }).to.throw('endIndexOutOfBounds');
-    expect(() => { hullSeries.getStartPointIndex(20); }).to.throw('endIndexOutOfBounds');
+    expect(() => {
+      hullSeries.getStartPointIndex(-1);
+    }).to.throw('endIndexOutOfBounds');
+    expect(() => {
+      hullSeries.getStartPointIndex(3);
+    }).to.throw('endIndexOutOfBounds');
+    expect(() => {
+      hullSeries.getStartPointIndex(20);
+    }).to.throw('endIndexOutOfBounds');
   });
 });

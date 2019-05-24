@@ -7,7 +7,7 @@ describe('TimeHull.calculateCentroid()', () => {
       { x: 0, y: 0, timestamp: 0 },
       { x: 100, y: 0, timestamp: 1000 },
       { x: 100, y: 100, timestamp: 2000 },
-      { x: 0, y: 100, timestamp: 3000 },
+      { x: 0, y: 100, timestamp: 3000 }
     ];
 
     expect(TimeHull.calculateCentroid(points)).to.eql({ x: 50, y: 50 });
@@ -19,7 +19,7 @@ describe('TimeHull.calculateCentroid()', () => {
       { x: 100, y: 0, timestamp: 1000 },
       { x: 100, y: 100, timestamp: 2000 },
       { x: 0, y: 100, timestamp: 3000 },
-      { x: 0, y: 0, timestamp: 4000 },
+      { x: 0, y: 0, timestamp: 4000 }
     ];
 
     expect(TimeHull.calculateCentroid(points)).to.eql({ x: 50, y: 50 });
@@ -31,11 +31,12 @@ describe('TimeHull.calculateCentroid()', () => {
       { x: 25, y: 84 },
       { x: 19, y: 6 },
       { x: 83, y: 96 },
-      { x: 99, y: 16 },
+      { x: 99, y: 16 }
     ];
 
-    expect(TimeHull.calculateCentroid(points)).to.eql(
-      { x: 104.93470790378007, y: 59.99312714776632 },
-    );
+    expect(TimeHull.calculateCentroid(points)).to.eql({
+      x: 104.93470790378007,
+      y: 59.99312714776632
+    });
   });
 });

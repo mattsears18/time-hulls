@@ -7,7 +7,7 @@ describe('TimeHull.area()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -19,7 +19,7 @@ describe('TimeHull.area()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -33,7 +33,7 @@ describe('TimeHull.area()', () => {
       { x: 200, y: 200, timestamp: 2000 },
       { x: 100, y: 200, timestamp: 3000 },
       { x: 150, y: 120, timestamp: 4000 },
-      { x: 110, y: 190, timestamp: 5000 },
+      { x: 110, y: 190, timestamp: 5000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -41,9 +41,7 @@ describe('TimeHull.area()', () => {
   });
 
   it('only has one point', () => {
-    const points = [
-      { x: 1337, y: 137, timestamp: 0 },
-    ];
+    const points = [{ x: 1337, y: 137, timestamp: 0 }];
 
     const timeHull = new TimeHull({ seriesPoints: points });
     expect(timeHull.area()).to.equal(0);
@@ -52,7 +50,7 @@ describe('TimeHull.area()', () => {
   it('only has two points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
-      { x: 200, y: 100, timestamp: 1000 },
+      { x: 200, y: 100, timestamp: 1000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -63,7 +61,7 @@ describe('TimeHull.area()', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
-      { x: 100, y: 100, timestamp: 2000 },
+      { x: 100, y: 100, timestamp: 2000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -74,7 +72,7 @@ describe('TimeHull.area()', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
-      { x: 100, y: 200, timestamp: 2000 },
+      { x: 100, y: 200, timestamp: 2000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -85,7 +83,7 @@ describe('TimeHull.area()', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 200, timestamp: 1000 },
-      { x: 300, y: 300, timestamp: 2000 },
+      { x: 300, y: 300, timestamp: 2000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -100,7 +98,7 @@ describe('TimeHull.area()', () => {
       { x: 0, y: 0 },
       { x: 300, y: 0 },
       { x: 300, y: 100 },
-      { x: 0, y: 100 },
+      { x: 0, y: 100 }
     ];
 
     expect(timeHull.area({ points })).to.equal(30000);
@@ -117,7 +115,7 @@ describe('TimeHull.area()', () => {
       { x: 0, y: 100 },
       { x: 150, y: 80 },
       { x: 10, y: 10 },
-      { x: 200, y: 20 },
+      { x: 200, y: 20 }
     ];
 
     expect(timeHull.area({ points })).to.equal(30000);

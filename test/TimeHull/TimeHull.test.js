@@ -19,7 +19,7 @@ describe('TimeHull.constructor()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
       { x: 100, y: 100, timestamp: 2000 },
-      { x: 100, y: 100, timestamp: 3000 },
+      { x: 100, y: 100, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -31,7 +31,7 @@ describe('TimeHull.constructor()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
       { x: 100, y: 100, timestamp: 2000 },
-      { x: 100, y: 100, timestamp: 3000 },
+      { x: 100, y: 100, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -48,36 +48,41 @@ describe('TimeHull.constructor()', () => {
       { x: 100, y: 100, timestamp: 8000 },
       { x: 100, y: 100, timestamp: 10000 },
       { x: 100, y: 100, timestamp: 10000 },
-      { x: 100, y: 100, timestamp: 10000 },
+      { x: 100, y: 100, timestamp: 10000 }
     ];
 
-    expect(new TimeHull({
-      seriesPoints: points,
-      startIndex: 0,
-      endIndex: 1,
-    }).duration()).to.equal(1000);
+    expect(
+      new TimeHull({
+        seriesPoints: points,
+        startIndex: 0,
+        endIndex: 1
+      }).duration()
+    ).to.equal(1000);
 
-    expect(new TimeHull({
-      seriesPoints: points,
-      startIndex: 0,
-      endIndex: 3,
-    }).duration()).to.equal(4000);
+    expect(
+      new TimeHull({
+        seriesPoints: points,
+        startIndex: 0,
+        endIndex: 3
+      }).duration()
+    ).to.equal(4000);
 
-    expect(new TimeHull({
-      seriesPoints: points,
-      startIndex: 0,
-      endIndex: 6,
-    }).duration()).to.equal(0);
+    expect(
+      new TimeHull({
+        seriesPoints: points,
+        startIndex: 0,
+        endIndex: 6
+      }).duration()
+    ).to.equal(0);
   });
 });
-
 
 describe('TimeHull - simple methods', () => {
   it('has a startTime', () => {
     const points = [
       { x: 100, y: 100, timestamp: 1337 },
       { x: 100, y: 100, timestamp: 2000 },
-      { x: 100, y: 100, timestamp: 3000 },
+      { x: 100, y: 100, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -88,7 +93,7 @@ describe('TimeHull - simple methods', () => {
     const points = [
       { x: 100, y: 100, timestamp: 1337 },
       { x: 100, y: 100, timestamp: 2000 },
-      { x: 100, y: 100, timestamp: 3000 },
+      { x: 100, y: 100, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -101,7 +106,7 @@ describe('TimeHull - simple methods', () => {
       { x: 100, y: 100, timestamp: 2000 },
       { x: 100, y: 100, timestamp: 3000 },
       { x: 100, y: 100, timestamp: 4000 },
-      { x: 100, y: 100, timestamp: 5000 },
+      { x: 100, y: 100, timestamp: 5000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -114,7 +119,7 @@ describe('TimeHull - simple methods', () => {
       { x: 100, y: 100, timestamp: 2000 },
       { x: 100, y: 100, timestamp: 3000 },
       { x: 100, y: 100, timestamp: 4000 },
-      { x: 100, y: 100, timestamp: 5000 },
+      { x: 100, y: 100, timestamp: 5000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
