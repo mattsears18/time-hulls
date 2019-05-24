@@ -13,7 +13,7 @@ describe('TimeHull.getCoverage()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
       { x: 100, y: 100, timestamp: 2000 },
-      { x: 100, y: 100, timestamp: 3000 },
+      { x: 100, y: 100, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -25,13 +25,13 @@ describe('TimeHull.getCoverage()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({
       seriesPoints: points,
       width: 2000,
-      height: 1000,
+      height: 1000
     });
     expect(timeHull.getCoverage()).toBe(0.005);
   });
@@ -41,13 +41,13 @@ describe('TimeHull.getCoverage()', () => {
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 },
+      { x: 100, y: 200, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({
       seriesPoints: points,
       width: 2000,
-      height: 1000,
+      height: 1000
     });
     expect(timeHull.getCoverage()).toBe(0.005);
   });
@@ -61,13 +61,13 @@ describe('TimeHull.getCoverage()', () => {
       { x: 150, y: 110, timestamp: 4000 },
       { x: 200, y: 190, timestamp: 5000 },
       { x: 110, y: 170, timestamp: 6000 },
-      { x: 140, y: 155, timestamp: 7000 },
+      { x: 140, y: 155, timestamp: 7000 }
     ];
 
     const timeHull = new TimeHull({
       seriesPoints: points,
       width: 2000,
-      height: 1000,
+      height: 1000
     });
     expect(timeHull.getCoverage()).toBe(0.005);
   });
@@ -77,13 +77,13 @@ describe('TimeHull.getCoverage()', () => {
       { x: 0, y: 0, timestamp: 0 },
       { x: 2000, y: 0, timestamp: 1000 },
       { x: 2000, y: 1000, timestamp: 2000 },
-      { x: 0, y: 1000, timestamp: 3000 },
+      { x: 0, y: 1000, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({
       seriesPoints: points,
       width: 2000,
-      height: 1000,
+      height: 1000
     });
     expect(timeHull.getCoverage()).toBe(1);
   });
@@ -93,7 +93,7 @@ describe('TimeHull.getCoverage()', () => {
     const timeHull = new TimeHull({
       seriesPoints: dummyPoints,
       width: 1000,
-      height: 1000,
+      height: 1000
     });
 
     const points = [{ x: 0, y: 0 }, { x: 300, y: 0 }, { x: 300, y: 100 }, { x: 0, y: 100 }];
@@ -106,7 +106,7 @@ describe('TimeHull.getCoverage()', () => {
     const timeHull = new TimeHull({
       seriesPoints: dummyPoints,
       width: 10,
-      height: 10,
+      height: 10
     });
 
     timeHull.coverage = 1337;
@@ -121,7 +121,7 @@ describe('TimeHull.getCoverage()', () => {
       { x: 0, y: 0, timestamp: 0 },
       { x: 300, y: 0, timestamp: 1000 },
       { x: 300, y: 100, timestamp: 2000 },
-      { x: 0, y: 100, timestamp: 3000 },
+      { x: 0, y: 100, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
@@ -145,13 +145,13 @@ describe('TimeHull.getCoverage()', () => {
       { x: 0, y: 0, timestamp: 0 },
       { x: 300, y: 0, timestamp: 1000 },
       { x: 300, y: 100, timestamp: 2000 },
-      { x: 0, y: 100, timestamp: 3000 },
+      { x: 0, y: 100, timestamp: 3000 }
     ];
 
     const timeHull = new TimeHull({
       seriesPoints: points,
       width: 0,
-      height: 0,
+      height: 0
     });
     expect(() => {
       timeHull.getCoverage();

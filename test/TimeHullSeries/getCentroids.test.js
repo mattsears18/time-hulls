@@ -16,13 +16,22 @@ describe('TimeHullSeries.getCentroids()', () => {
     { x: 300, y: 400, timestamp: 11000 },
     { x: 400, y: 300, timestamp: 12000 },
     { x: 500, y: 200, timestamp: 13000 },
-    { x: 600, y: 100, timestamp: 14000 },
+    { x: 600, y: 100, timestamp: 14000 }
   ];
+
+  test('specifies an invalid hull and defaults to all hulls', () => {
+    const hullSeries = new TimeHullSeries({
+      points,
+      period: 5000
+    });
+
+    expect(hullSeries.getCentroids({ hullIndex: 1337 })).toEqual(hullSeries.getCentroids());
+  });
 
   test('gets the centroids', () => {
     const centroids = new TimeHullSeries({
       points,
-      period: 5000,
+      period: 5000
     }).getCentroids();
 
     expect(centroids.length).toBe(10);
@@ -36,14 +45,14 @@ describe('TimeHullSeries.getCentroids()', () => {
       { x: 484.8484848484849, y: 303.030303030303 },
       { x: 464.2857142857143, y: 279.76190476190476 },
       { x: 420.28985507246375, y: 260.8695652173913 },
-      { x: 325, y: 208.33333333333334 },
+      { x: 325, y: 208.33333333333334 }
     ]);
   });
 
   test('gets the first 5 centroids', () => {
     const centroids = new TimeHullSeries({
       points,
-      period: 5000,
+      period: 5000
     }).getCentroids({ hullIndex: 4 });
 
     expect(centroids.length).toBe(5);
@@ -52,14 +61,14 @@ describe('TimeHullSeries.getCentroids()', () => {
       { x: 450, y: 400 },
       { x: 525, y: 383.3333333333333 },
       { x: 600, y: 366.6666666666667 },
-      { x: 500, y: 400 },
+      { x: 500, y: 400 }
     ]);
   });
 
   test('gets one coordinate of the centroids', () => {
     const series = new TimeHullSeries({
       points,
-      period: 5000,
+      period: 5000
     });
 
     const centroidXs = series.getCentroids({ which: 'x' });
@@ -74,7 +83,7 @@ describe('TimeHullSeries.getCentroids()', () => {
       484.8484848484849,
       464.2857142857143,
       420.28985507246375,
-      325,
+      325
     ]);
 
     const centroidYs = series.getCentroids({ which: 'y' });
@@ -89,7 +98,7 @@ describe('TimeHullSeries.getCentroids()', () => {
       303.030303030303,
       279.76190476190476,
       260.8695652173913,
-      208.33333333333334,
+      208.33333333333334
     ]);
   });
 });
