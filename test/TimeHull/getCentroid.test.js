@@ -1,6 +1,6 @@
 const TimeHull = require('../../lib/TimeHull');
 
-describe('TimeHull.centroid()', () => {
+describe('TimeHull.getCentroid()', () => {
   test('gets a centroid without passing options', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
@@ -10,7 +10,7 @@ describe('TimeHull.centroid()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.centroid()).toEqual({ x: 150, y: 150 });
+    expect(timeHull.getCentroid()).toEqual({ x: 150, y: 150 });
   });
 
   test('gets a centroid with no inner points', () => {
@@ -22,7 +22,7 @@ describe('TimeHull.centroid()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.centroid()).toEqual({ x: 150, y: 150 });
+    expect(timeHull.getCentroid()).toEqual({ x: 150, y: 150 });
   });
 
   test('gets a centroid with inner points', () => {
@@ -36,14 +36,14 @@ describe('TimeHull.centroid()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.centroid()).toEqual({ x: 150, y: 150 });
+    expect(timeHull.getCentroid()).toEqual({ x: 150, y: 150 });
   });
 
   test('only has one point', () => {
     const points = [{ x: 1337, y: 137, timestamp: 0 }];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.centroid()).toEqual({ x: 1337, y: 137 });
+    expect(timeHull.getCentroid()).toEqual({ x: 1337, y: 137 });
   });
 
   test('only has one unique point', () => {
@@ -54,17 +54,14 @@ describe('TimeHull.centroid()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.centroid()).toEqual({ x: 1337, y: 137 });
+    expect(timeHull.getCentroid()).toEqual({ x: 1337, y: 137 });
   });
 
   test('only has two points', () => {
-    const points = [
-      { x: 100, y: 100, timestamp: 0 },
-      { x: 200, y: 100, timestamp: 1000 },
-    ];
+    const points = [{ x: 100, y: 100, timestamp: 0 }, { x: 200, y: 100, timestamp: 1000 }];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.centroid()).toEqual({ x: 150, y: 100 });
+    expect(timeHull.getCentroid()).toEqual({ x: 150, y: 100 });
   });
 
   test('only has three points', () => {
@@ -75,7 +72,7 @@ describe('TimeHull.centroid()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.centroid()).toEqual({ x: 50, y: 100 });
+    expect(timeHull.getCentroid()).toEqual({ x: 50, y: 100 });
   });
 
   test('gets a single coordinate of the centroid', () => {
@@ -86,7 +83,7 @@ describe('TimeHull.centroid()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.centroid({ which: 'x' })).toBe(50);
-    expect(timeHull.centroid({ which: 'y' })).toBe(100);
+    expect(timeHull.getCentroid({ which: 'x' })).toBe(50);
+    expect(timeHull.getCentroid({ which: 'y' })).toBe(100);
   });
 });
