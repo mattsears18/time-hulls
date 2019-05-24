@@ -6,8 +6,10 @@
   "repository": "mattsears18/time-hulls",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha --recursive",
-    "testWatch": "mocha --recursive -w",
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll --coverage",
+    "test-mocha": "nyc mocha --recursive",
+    "test-mocha-watch": "mocha --recursive -w",
     "coverage": "nyc report",
     "lint": "eslint .",
     "build": "gulp"
@@ -24,9 +26,10 @@
     "jStat": "^1.7.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/preset-env": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
+    "babel-jest": "^24.8.0",
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",
     "documentation": "^10.1.0",
@@ -38,6 +41,7 @@
     "gulp-documentation": "^3.2.1",
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
+    "jest": "^24.8.0",
     "mocha": "^6.1.4",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^14.0.0"
