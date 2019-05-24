@@ -1,8 +1,7 @@
-const { expect } = require('chai');
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
 describe('TimeHullSeries.getStartPointIndex()', () => {
-  it('gets the start indices', async () => {
+  test('gets the start indices', async () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
@@ -13,20 +12,20 @@ describe('TimeHullSeries.getStartPointIndex()', () => {
       { x: 100, y: 100, timestamp: 6000 },
       { x: 100, y: 100, timestamp: 7000 },
       { x: 100, y: 100, timestamp: 8001 },
-      { x: 100, y: 100, timestamp: 9000 }
+      { x: 100, y: 100, timestamp: 9000 },
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
-      period: 5000
+      period: 5000,
     });
 
-    expect(hullSeries.getStartPointIndex(9)).to.equal(4);
-    expect(hullSeries.getStartPointIndex(8)).to.equal(4);
-    expect(hullSeries.getStartPointIndex(5)).to.equal(0);
+    expect(hullSeries.getStartPointIndex(9)).toBe(4);
+    expect(hullSeries.getStartPointIndex(8)).toBe(4);
+    expect(hullSeries.getStartPointIndex(5)).toBe(0);
   });
 
-  it('returns undefined when it runs out of points', () => {
+  test('returns undefined when it runs out of points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
@@ -37,37 +36,37 @@ describe('TimeHullSeries.getStartPointIndex()', () => {
       { x: 100, y: 100, timestamp: 6000 },
       { x: 100, y: 100, timestamp: 7000 },
       { x: 100, y: 100, timestamp: 8001 },
-      { x: 100, y: 100, timestamp: 9000 }
+      { x: 100, y: 100, timestamp: 9000 },
     ];
 
     const hullSeries = new TimeHullSeries({
       points,
-      period: 5000
+      period: 5000,
     });
 
-    expect(hullSeries.getStartPointIndex(2)).to.be.an('undefined');
-    expect(hullSeries.getStartPointIndex(0)).to.be.an('undefined');
+    expect(hullSeries.getStartPointIndex(2)).toBeUndefined();
+    expect(hullSeries.getStartPointIndex(0)).toBeUndefined();
   });
 
-  it('has an endIndex that is out of bounds', () => {
+  test('has an endIndex that is out of bounds', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
-      { x: 100, y: 100, timestamp: 2000 }
+      { x: 100, y: 100, timestamp: 2000 },
     ];
     const hullSeries = new TimeHullSeries({
       points,
-      period: 5000
+      period: 5000,
     });
 
     expect(() => {
       hullSeries.getStartPointIndex(-1);
-    }).to.throw('endIndexOutOfBounds');
+    }).toThrowError('endIndexOutOfBounds');
     expect(() => {
       hullSeries.getStartPointIndex(3);
-    }).to.throw('endIndexOutOfBounds');
+    }).toThrowError('endIndexOutOfBounds');
     expect(() => {
       hullSeries.getStartPointIndex(20);
-    }).to.throw('endIndexOutOfBounds');
+    }).toThrowError('endIndexOutOfBounds');
   });
 });

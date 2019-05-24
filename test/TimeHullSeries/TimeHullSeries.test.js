@@ -1,29 +1,28 @@
-const { expect } = require('chai');
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
 describe('TimeHullSeries.constructor()', () => {
-  it('creates a TimeHullSeries without passing options', () => {
-    expect(() => new TimeHullSeries()).to.throw('noPoints');
+  test('creates a TimeHullSeries without passing options', () => {
+    expect(() => new TimeHullSeries()).toThrowError('noPoints');
   });
 
-  it('has undefined points', () => {
-    expect(() => new TimeHullSeries({})).to.throw('noPoints');
+  test('has undefined points', () => {
+    expect(() => new TimeHullSeries({})).toThrowError('noPoints');
   });
 
-  it('has empty points', () => {
-    expect(() => new TimeHullSeries({ points: [] })).to.throw('noPoints');
+  test('has empty points', () => {
+    expect(() => new TimeHullSeries({ points: [] })).toThrowError('noPoints');
   });
 
-  it('has too few points', () => {
+  test('has too few points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
-      { x: 100, y: 100, timestamp: 1000 }
+      { x: 100, y: 100, timestamp: 1000 },
     ];
 
-    expect(() => new TimeHullSeries({ points })).to.throw('tooFewPoints');
+    expect(() => new TimeHullSeries({ points })).toThrowError('tooFewPoints');
   });
 
-  it('has no period', () => {
+  test('has no period', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
@@ -31,41 +30,41 @@ describe('TimeHullSeries.constructor()', () => {
       { x: 100, y: 100, timestamp: 3000 },
       { x: 100, y: 100, timestamp: 4000 },
       { x: 100, y: 100, timestamp: 5000 },
-      { x: 100, y: 100, timestamp: 6000 }
+      { x: 100, y: 100, timestamp: 6000 },
     ];
 
-    expect(() => new TimeHullSeries({ points })).to.throw('noPeriod');
+    expect(() => new TimeHullSeries({ points })).toThrowError('noPeriod');
   });
 
-  it('has 3 points', () => {
+  test('has 3 points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
-      { x: 100, y: 100, timestamp: 2000 }
+      { x: 100, y: 100, timestamp: 2000 },
     ];
 
     const series = new TimeHullSeries({ points, period: 5000 });
-    expect(series.points.length).to.equal(3);
+    expect(series.points.length).toBe(3);
   });
 
-  it('sorts the points by timestamp', () => {
+  test('sorts the points by timestamp', () => {
     const points = [
       { x: 100, y: 100, timestamp: 4000 },
       { x: 100, y: 100, timestamp: 5000 },
       { x: 100, y: 100, timestamp: 3000 },
       { x: 100, y: 100, timestamp: 2000 },
       { x: 100, y: 100, timestamp: 0 },
-      { x: 100, y: 100, timestamp: 1000 }
+      { x: 100, y: 100, timestamp: 1000 },
     ];
 
     const hullSeries = new TimeHullSeries({ points, period: 5000 });
-    expect(hullSeries.points).to.eql([
+    expect(hullSeries.points).toEqual([
       { x: 100, y: 100, timestamp: 0 },
       { x: 100, y: 100, timestamp: 1000 },
       { x: 100, y: 100, timestamp: 2000 },
       { x: 100, y: 100, timestamp: 3000 },
       { x: 100, y: 100, timestamp: 4000 },
-      { x: 100, y: 100, timestamp: 5000 }
+      { x: 100, y: 100, timestamp: 5000 },
     ]);
   });
 });

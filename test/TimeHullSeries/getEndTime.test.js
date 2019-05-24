@@ -1,4 +1,3 @@
-const { expect } = require('chai');
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
 describe('TimeHullSeries.getEndTime()', () => {
@@ -11,15 +10,15 @@ describe('TimeHullSeries.getEndTime()', () => {
     { x: 100, y: 100, timestamp: 6000 },
     { x: 100, y: 100, timestamp: 7000 },
     { x: 100, y: 100, timestamp: 8001 },
-    { x: 100, y: 100, timestamp: 9000 }
+    { x: 100, y: 100, timestamp: 9000 },
   ];
 
-  it('gets the end time', () => {
+  test('gets the end time', () => {
     const hullSeries = new TimeHullSeries({
       points,
-      period: 5000
+      period: 5000,
     });
 
-    expect(hullSeries.getEndTime()).to.equal(9000);
+    expect(hullSeries.getEndTime()).toBe(9000);
   });
 });

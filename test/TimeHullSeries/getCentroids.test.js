@@ -1,4 +1,3 @@
-const { expect } = require('chai');
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
 describe('TimeHullSeries.getCentroids()', () => {
@@ -17,17 +16,17 @@ describe('TimeHullSeries.getCentroids()', () => {
     { x: 300, y: 400, timestamp: 11000 },
     { x: 400, y: 300, timestamp: 12000 },
     { x: 500, y: 200, timestamp: 13000 },
-    { x: 600, y: 100, timestamp: 14000 }
+    { x: 600, y: 100, timestamp: 14000 },
   ];
 
-  it('gets the centroids', () => {
+  test('gets the centroids', () => {
     const centroids = new TimeHullSeries({
       points,
-      period: 5000
+      period: 5000,
     }).getCentroids();
 
-    expect(centroids.length).to.equal(10);
-    expect(centroids).to.eql([
+    expect(centroids.length).toBe(10);
+    expect(centroids).toEqual([
       { x: 375, y: 416.6666666666667 },
       { x: 450, y: 400 },
       { x: 525, y: 383.3333333333333 },
@@ -37,35 +36,35 @@ describe('TimeHullSeries.getCentroids()', () => {
       { x: 484.8484848484849, y: 303.030303030303 },
       { x: 464.2857142857143, y: 279.76190476190476 },
       { x: 420.28985507246375, y: 260.8695652173913 },
-      { x: 325, y: 208.33333333333334 }
+      { x: 325, y: 208.33333333333334 },
     ]);
   });
 
-  it('gets the first 5 centroids', () => {
+  test('gets the first 5 centroids', () => {
     const centroids = new TimeHullSeries({
       points,
-      period: 5000
+      period: 5000,
     }).getCentroids({ hullIndex: 4 });
 
-    expect(centroids.length).to.equal(5);
-    expect(centroids).to.eql([
+    expect(centroids.length).toBe(5);
+    expect(centroids).toEqual([
       { x: 375, y: 416.6666666666667 },
       { x: 450, y: 400 },
       { x: 525, y: 383.3333333333333 },
       { x: 600, y: 366.6666666666667 },
-      { x: 500, y: 400 }
+      { x: 500, y: 400 },
     ]);
   });
 
-  it('gets one coordinate of the centroids', () => {
+  test('gets one coordinate of the centroids', () => {
     const series = new TimeHullSeries({
       points,
-      period: 5000
+      period: 5000,
     });
 
     const centroidXs = series.getCentroids({ which: 'x' });
-    expect(centroidXs.length).to.equal(10);
-    expect(centroidXs).to.eql([
+    expect(centroidXs.length).toBe(10);
+    expect(centroidXs).toEqual([
       375,
       450,
       525,
@@ -75,12 +74,12 @@ describe('TimeHullSeries.getCentroids()', () => {
       484.8484848484849,
       464.2857142857143,
       420.28985507246375,
-      325
+      325,
     ]);
 
     const centroidYs = series.getCentroids({ which: 'y' });
-    expect(centroidYs.length).to.equal(10);
-    expect(centroidYs).to.eql([
+    expect(centroidYs.length).toBe(10);
+    expect(centroidYs).toEqual([
       416.6666666666667,
       400,
       383.3333333333333,
@@ -90,7 +89,7 @@ describe('TimeHullSeries.getCentroids()', () => {
       303.030303030303,
       279.76190476190476,
       260.8695652173913,
-      208.33333333333334
+      208.33333333333334,
     ]);
   });
 });

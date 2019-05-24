@@ -16,8 +16,8 @@ export function compress(cb) {
     .src('lib/**/*.js')
     .pipe(
       babel({
-        presets: ['@babel/env']
-      })
+        presets: ['@babel/env'],
+      }),
     )
     .pipe(uglify())
     .pipe(gulp.dest('./dist/'));

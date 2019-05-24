@@ -1,4 +1,3 @@
-const { expect } = require('chai');
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
 describe('TimeHullSeries.getStartTime()', () => {
@@ -12,15 +11,18 @@ describe('TimeHullSeries.getStartTime()', () => {
     { x: 100, y: 100, timestamp: 27000 },
     { x: 100, y: 100, timestamp: 28001 },
     { x: 100, y: 100, timestamp: 29000 },
-    { x: 100, y: 100, timestamp: 79000 }
+    { x: 100, y: 100, timestamp: 79000 },
   ];
 
-  it('gets the timestamp of the first point that is actually in a hull', () => {
-    const hullSeries = new TimeHullSeries({
-      points,
-      period: 5000
-    });
+  test(
+    'gets the timestamp of the first point that is actually in a hull',
+    () => {
+      const hullSeries = new TimeHullSeries({
+        points,
+        period: 5000,
+      });
 
-    expect(hullSeries.getStartTime()).to.equal(22000);
-  });
+      expect(hullSeries.getStartTime()).toBe(22000);
+    },
+  );
 });

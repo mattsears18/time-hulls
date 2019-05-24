@@ -1,68 +1,67 @@
-const { expect } = require('chai');
 const TimeHull = require('../../lib/TimeHull');
 
 describe('TimeHull.getSlicedPoints()', () => {
-  it('gets all of the points', () => {
+  test('gets all of the points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 }
+      { x: 100, y: 200, timestamp: 3000 },
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.getSlicedPoints()).to.eql([
+    expect(timeHull.getSlicedPoints()).toEqual([
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 }
+      { x: 100, y: 200, timestamp: 3000 },
     ]);
 
-    expect(timeHull.getSlicedPoints()).to.eql(timeHull.seriesPoints());
+    expect(timeHull.getSlicedPoints()).toEqual(timeHull.seriesPoints());
   });
 
-  it('gets the x coordinates only', () => {
+  test('gets the x coordinates only', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 }
+      { x: 100, y: 200, timestamp: 3000 },
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.getSlicedPoints('x')).to.eql([100, 200, 200, 100]);
+    expect(timeHull.getSlicedPoints('x')).toEqual([100, 200, 200, 100]);
   });
 
-  it('gets the y coordinates only', () => {
+  test('gets the y coordinates only', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 }
+      { x: 100, y: 200, timestamp: 3000 },
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.getSlicedPoints('y')).to.eql([100, 100, 200, 200]);
+    expect(timeHull.getSlicedPoints('y')).toEqual([100, 100, 200, 200]);
   });
 
-  it('requests an undefined coordinate', () => {
+  test('requests an undefined coordinate', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
-      { x: 100, y: 200, timestamp: 3000 }
+      { x: 100, y: 200, timestamp: 3000 },
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.getSlicedPoints('z')).to.eql([
+    expect(timeHull.getSlicedPoints('z')).toEqual([
       undefined,
       undefined,
       undefined,
-      undefined
+      undefined,
     ]);
   });
 
-  it('slices off the beginning points', () => {
+  test('slices off the beginning points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
@@ -71,19 +70,19 @@ describe('TimeHull.getSlicedPoints()', () => {
       { x: 100, y: 100, timestamp: 4000 },
       { x: 200, y: 100, timestamp: 5000 },
       { x: 200, y: 200, timestamp: 6000 },
-      { x: 100, y: 200, timestamp: 7000 }
+      { x: 100, y: 200, timestamp: 7000 },
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points, startIndex: 4 });
-    expect(timeHull.getSlicedPoints()).to.eql([
+    expect(timeHull.getSlicedPoints()).toEqual([
       { x: 100, y: 100, timestamp: 4000 },
       { x: 200, y: 100, timestamp: 5000 },
       { x: 200, y: 200, timestamp: 6000 },
-      { x: 100, y: 200, timestamp: 7000 }
+      { x: 100, y: 200, timestamp: 7000 },
     ]);
   });
 
-  it('slices off the end points', () => {
+  test('slices off the end points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
@@ -92,20 +91,20 @@ describe('TimeHull.getSlicedPoints()', () => {
       { x: 100, y: 100, timestamp: 4000 },
       { x: 200, y: 100, timestamp: 5000 },
       { x: 200, y: 200, timestamp: 6000 },
-      { x: 100, y: 200, timestamp: 7000 }
+      { x: 100, y: 200, timestamp: 7000 },
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points, endIndex: 4 });
-    expect(timeHull.getSlicedPoints()).to.eql([
+    expect(timeHull.getSlicedPoints()).toEqual([
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
       { x: 200, y: 200, timestamp: 2000 },
       { x: 100, y: 200, timestamp: 3000 },
-      { x: 100, y: 100, timestamp: 4000 }
+      { x: 100, y: 100, timestamp: 4000 },
     ]);
   });
 
-  it('slices off the beginning and end points', () => {
+  test('slices off the beginning and end points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 1000 },
@@ -114,20 +113,20 @@ describe('TimeHull.getSlicedPoints()', () => {
       { x: 100, y: 100, timestamp: 4000 },
       { x: 200, y: 100, timestamp: 5000 },
       { x: 200, y: 200, timestamp: 6000 },
-      { x: 100, y: 200, timestamp: 7000 }
+      { x: 100, y: 200, timestamp: 7000 },
     ];
 
     const timeHull = new TimeHull({
       seriesPoints: points,
       startIndex: 2,
-      endIndex: 6
+      endIndex: 6,
     });
-    expect(timeHull.getSlicedPoints()).to.eql([
+    expect(timeHull.getSlicedPoints()).toEqual([
       { x: 200, y: 200, timestamp: 2000 },
       { x: 100, y: 200, timestamp: 3000 },
       { x: 100, y: 100, timestamp: 4000 },
       { x: 200, y: 100, timestamp: 5000 },
-      { x: 200, y: 200, timestamp: 6000 }
+      { x: 200, y: 200, timestamp: 6000 },
     ]);
   });
 });

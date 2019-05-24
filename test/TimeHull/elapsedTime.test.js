@@ -1,8 +1,7 @@
-const { expect } = require('chai');
 const TimeHull = require('../../lib/TimeHull');
 
 describe('TimeHull.elapsedTime()', () => {
-  it('gets the elapsed time', () => {
+  test('gets the elapsed time', () => {
     const points = [
       { x: 100, y: 100, timestamp: 22 },
       { x: 100, y: 100, timestamp: 100 },
@@ -18,15 +17,15 @@ describe('TimeHull.elapsedTime()', () => {
       { x: 100, y: 100, timestamp: 11000 },
       { x: 100, y: 100, timestamp: 12000 },
       { x: 100, y: 100, timestamp: 13000 },
-      { x: 100, y: 100, timestamp: 14000 }
+      { x: 100, y: 100, timestamp: 14000 },
     ];
 
     const timeHull = new TimeHull({
       seriesPoints: points,
       startIndex: 5,
-      endIndex: 12
+      endIndex: 12,
     });
 
-    expect(timeHull.elapsedTime()).to.equal(11978);
+    expect(timeHull.elapsedTime()).toBe(11978);
   });
 });

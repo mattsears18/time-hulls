@@ -1,4 +1,3 @@
-const { expect } = require('chai');
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
 describe('TimeHullSeries.getHull()', () => {
@@ -14,80 +13,83 @@ describe('TimeHullSeries.getHull()', () => {
     { x: 100, y: 100, timestamp: 8000 },
     { x: 100, y: 100, timestamp: 9000 },
     { x: 100, y: 100, timestamp: 10000 },
-    { x: 100, y: 100, timestamp: 11000 }
+    { x: 100, y: 100, timestamp: 11000 },
   ];
 
-  it('does not specify a hull', () => {
+  test('does not specify a hull', () => {
     const hullseries = new TimeHullSeries({
       points: testPoints,
-      period: 5000
+      period: 5000,
     });
 
     expect(() => {
       hullseries.getHull();
-    }).to.throw('noHullSpecified');
+    }).toThrowError('noHullSpecified');
     expect(() => {
       hullseries.getHull({ hull: undefined });
-    }).to.throw('noHullSpecified');
+    }).toThrowError('noHullSpecified');
   });
 
-  it('gets a hull by passing a hull (confirms that the hull is a TimeHull)', () => {
+  test(
+    'gets a hull by passing a hull (confirms that the hull is a TimeHull)',
+    () => {
+      const hullseries = new TimeHullSeries({
+        points: testPoints,
+        period: 5000,
+      });
+
+      const testHull = hullseries.getHulls()[3];
+      const hull = hullseries.getHull({ hull: testHull });
+
+      expect(hull.constructor.name).toBe('TimeHull');
+      expect(hull.number).toBe(4);
+    },
+  );
+
+  test('passes an invalid hull', () => {
     const hullseries = new TimeHullSeries({
       points: testPoints,
-      period: 5000
-    });
-
-    const testHull = hullseries.getHulls()[3];
-    const hull = hullseries.getHull({ hull: testHull });
-
-    expect(hull.constructor.name).to.equal('TimeHull');
-    expect(hull.number).to.equal(4);
-  });
-
-  it('passes an invalid hull', () => {
-    const hullseries = new TimeHullSeries({
-      points: testPoints,
-      period: 5000
+      period: 5000,
     });
 
     expect(() => {
       hullseries.getHull({ hull: {} });
-    }).to.throw('invalidHull');
+    }).toThrowError('invalidHull');
   });
 
-  it('passes an invalid hullIndex', () => {
+  test('passes an invalid hullIndex', () => {
     const hullseries = new TimeHullSeries({
       points: testPoints,
-      period: 5000
+      period: 5000,
     });
 
     expect(() => {
       hullseries.getHull({ hullIndex: '' });
-    }).to.throw('invalidHullIndex');
+    }).toThrowError('invalidHullIndex');
   });
 
-  it('gets a hull by hullIndex', () => {
+  test('gets a hull by hullIndex', () => {
     const hullseries = new TimeHullSeries({
       points: testPoints,
-      period: 5000
+      period: 5000,
     });
 
     const hull = hullseries.getHull({ hullIndex: 3 });
-    expect(hull.constructor.name).to.equal('TimeHull');
-    expect(hull.number).to.equal(4);
+    expect(hull.constructor.name).toBe('TimeHull');
+    expect(hull.number).toBe(4);
   });
 
-  it('requests an out of bounds hullIndex', () => {
+  test('requests an out of bounds hullIndex', () => {
     const hullseries = new TimeHullSeries({
       points: testPoints,
-      period: 5000
+      period: 5000,
     });
 
     expect(() => {
       hullseries.getHull({ hullIndex: -3 });
-    }).to.throw('hullIndexOutOfBounds');
+    }).toThrowError('hullIndexOutOfBounds');
     expect(() => {
       hullseries.getHull({ hullIndex: 10000000 });
-    }).to.throw('hullIndexOutOfBounds');
+    }).toThrowError('hullIndexOutOfBounds');
   });
 });
