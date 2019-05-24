@@ -1,6 +1,6 @@
 {
   "name": "time-hulls",
-  "version": "0.0.94",
+  "version": "0.0.95",
   "description": "Calculates a series of convex hulls for periods of timestamped 2D point data",
   "license": "MIT",
   "repository": "mattsears18/time-hulls",
