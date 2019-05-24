@@ -421,8 +421,6 @@ describe('TimeHullSeries.getHulls()', () => {
       period: 5000
     });
 
-    console.log(hullSeries.getHulls());
-
     expect(hullSeries.getHulls()[0].startIndex).to.equal(0);
     expect(hullSeries.getHulls().length).to.equal(10);
   });

@@ -1,6 +1,6 @@
 {
   "name": "time-hulls",
-  "version": "0.0.95",
+  "version": "0.0.96",
   "description": "Calculates a series of convex hulls for periods of timestamped 2D point data",
   "license": "MIT",
   "repository": "mattsears18/time-hulls",
@@ -8,9 +8,6 @@
   "scripts": {
     "test": "jest --coverage",
     "test-watch": "jest --watchAll --coverage",
-    "test-mocha": "nyc mocha --recursive",
-    "test-mocha-watch": "mocha --recursive -w",
-    "coverage": "nyc report",
     "lint": "eslint .",
     "build": "gulp"
   },
@@ -41,9 +38,6 @@
     "gulp-documentation": "^3.2.1",
     "gulp-uglify": "^3.0.2",
     "gulp-watch": "^5.0.1",
-    "jest": "^24.8.0",
-    "mocha": "^6.1.4",
-    "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^14.0.0"
+    "jest": "^24.8.0"
   }
 }
