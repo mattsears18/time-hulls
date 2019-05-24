@@ -1,14 +1,11 @@
 const TimeHull = require('../../lib/TimeHull');
 
-describe('TimeHull.coverage()', () => {
+describe('TimeHull.getCoverage()', () => {
   test('has too few points', () => {
-    const points = [
-      { x: 100, y: 100, timestamp: 0 },
-      { x: 200, y: 200, timestamp: 1000 },
-    ];
+    const points = [{ x: 100, y: 100, timestamp: 0 }, { x: 200, y: 200, timestamp: 1000 }];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.coverage({})).toBe(0);
+    expect(timeHull.getCoverage()).toBe(0);
   });
 
   test('has zero coverage', () => {
@@ -20,7 +17,7 @@ describe('TimeHull.coverage()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.coverage({})).toBe(0);
+    expect(timeHull.getCoverage()).toBe(0);
   });
 
   test('gets coverage with no inner points', () => {
@@ -36,7 +33,7 @@ describe('TimeHull.coverage()', () => {
       width: 2000,
       height: 1000,
     });
-    expect(timeHull.coverage({})).toBe(0.005);
+    expect(timeHull.getCoverage()).toBe(0.005);
   });
 
   test('gets coverage without passing options', () => {
@@ -52,7 +49,7 @@ describe('TimeHull.coverage()', () => {
       width: 2000,
       height: 1000,
     });
-    expect(timeHull.coverage()).toBe(0.005);
+    expect(timeHull.getCoverage()).toBe(0.005);
   });
 
   test('gets coverage with inner points', () => {
@@ -72,7 +69,7 @@ describe('TimeHull.coverage()', () => {
       width: 2000,
       height: 1000,
     });
-    expect(timeHull.coverage({})).toBe(0.005);
+    expect(timeHull.getCoverage()).toBe(0.005);
   });
 
   test('has full coverage', () => {
@@ -88,7 +85,7 @@ describe('TimeHull.coverage()', () => {
       width: 2000,
       height: 1000,
     });
-    expect(timeHull.coverage({})).toBe(1);
+    expect(timeHull.getCoverage()).toBe(1);
   });
 
   test('gets the coverage of a custom set of points', () => {
@@ -99,14 +96,9 @@ describe('TimeHull.coverage()', () => {
       height: 1000,
     });
 
-    const points = [
-      { x: 0, y: 0 },
-      { x: 300, y: 0 },
-      { x: 300, y: 100 },
-      { x: 0, y: 100 },
-    ];
+    const points = [{ x: 0, y: 0 }, { x: 300, y: 0 }, { x: 300, y: 100 }, { x: 0, y: 100 }];
 
-    expect(timeHull.coverage({ points })).toBe(0.03);
+    expect(timeHull.getCoverage({ points })).toBe(0.03);
   });
 
   test('overrides width and height', () => {
@@ -117,17 +109,14 @@ describe('TimeHull.coverage()', () => {
       height: 10,
     });
 
-    const points = [
-      { x: 0, y: 0 },
-      { x: 300, y: 0 },
-      { x: 300, y: 100 },
-      { x: 0, y: 100 },
-    ];
+    timeHull.coverage = 1337;
 
-    expect(timeHull.coverage({ points, width: 1000, height: 1000 })).toBe(0.03);
+    const points = [{ x: 0, y: 0 }, { x: 300, y: 0 }, { x: 300, y: 100 }, { x: 0, y: 100 }];
+
+    expect(timeHull.getCoverage({ points, width: 1000, height: 1000 })).toBe(0.03);
   });
 
-  test('has does not provide stimulus dimensions', () => {
+  test('does not provide stimulus dimensions', () => {
     const points = [
       { x: 0, y: 0, timestamp: 0 },
       { x: 300, y: 0, timestamp: 1000 },
@@ -137,17 +126,17 @@ describe('TimeHull.coverage()', () => {
 
     const timeHull = new TimeHull({ seriesPoints: points });
     expect(() => {
-      timeHull.coverage({});
+      timeHull.getCoverage();
     }).toThrowError('noStimulusArea');
 
     const timeHull2 = new TimeHull({ seriesPoints: points, width: 1000 });
     expect(() => {
-      timeHull2.coverage({});
+      timeHull2.getCoverage();
     }).toThrowError('noStimulusArea');
 
     const timeHull3 = new TimeHull({ seriesPoints: points, height: 1000 });
     expect(() => {
-      timeHull3.coverage({});
+      timeHull3.getCoverage();
     }).toThrowError('noStimulusArea');
   });
 
@@ -165,7 +154,15 @@ describe('TimeHull.coverage()', () => {
       height: 0,
     });
     expect(() => {
-      timeHull.coverage({});
+      timeHull.getCoverage();
     }).toThrowError('noStimulusArea');
+  });
+
+  test('gets a previously calculated coverage', () => {
+    const dummyPoints = [{ x: 1, y: 1, timestamp: 1000 }];
+    const timeHull = new TimeHull({ seriesPoints: dummyPoints });
+    timeHull.coverage = 1337;
+
+    expect(timeHull.getCoverage()).toBe(1337);
   });
 });

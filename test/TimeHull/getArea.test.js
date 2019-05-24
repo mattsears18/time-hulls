@@ -1,6 +1,6 @@
 const TimeHull = require('../../lib/TimeHull');
 
-describe('TimeHull.area()', () => {
+describe('TimeHull.getArea()', () => {
   test('gets an area without passing options', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
@@ -10,7 +10,7 @@ describe('TimeHull.area()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.area()).toBe(10000);
+    expect(timeHull.getArea()).toBe(10000);
   });
 
   test('gets an area with no inner points', () => {
@@ -22,7 +22,7 @@ describe('TimeHull.area()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.area()).toBe(10000);
+    expect(timeHull.getArea()).toBe(10000);
   });
 
   test('gets an area with inner points', () => {
@@ -36,21 +36,21 @@ describe('TimeHull.area()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.area()).toBe(10000);
+    expect(timeHull.getArea()).toBe(10000);
   });
 
   test('only has one point', () => {
     const points = [{ x: 1337, y: 137, timestamp: 0 }];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.area()).toBe(0);
+    expect(timeHull.getArea()).toBe(0);
   });
 
   test('only has two points', () => {
     const points = [{ x: 100, y: 100, timestamp: 0 }, { x: 200, y: 100, timestamp: 1000 }];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.area()).toBe(0);
+    expect(timeHull.getArea()).toBe(0);
   });
 
   test('has three points but less than three unique', () => {
@@ -61,7 +61,7 @@ describe('TimeHull.area()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.area()).toBe(0);
+    expect(timeHull.getArea()).toBe(0);
   });
 
   test('has three unique points', () => {
@@ -72,7 +72,7 @@ describe('TimeHull.area()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.area()).toBe(5000);
+    expect(timeHull.getArea()).toBe(5000);
   });
 
   test('has three unique but colinear points', () => {
@@ -83,7 +83,7 @@ describe('TimeHull.area()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.area()).toBe(0);
+    expect(timeHull.getArea()).toBe(0);
   });
 
   test('gets the area of a custom set of points', () => {
@@ -92,7 +92,7 @@ describe('TimeHull.area()', () => {
 
     const points = [{ x: 0, y: 0 }, { x: 300, y: 0 }, { x: 300, y: 100 }, { x: 0, y: 100 }];
 
-    expect(timeHull.area({ points })).toBe(30000);
+    expect(timeHull.getArea({ points })).toBe(30000);
   });
 
   test('gets the area of a custom set of points with inner points', () => {
@@ -109,6 +109,14 @@ describe('TimeHull.area()', () => {
       { x: 200, y: 20 },
     ];
 
-    expect(timeHull.area({ points })).toBe(30000);
+    expect(timeHull.getArea({ points })).toBe(30000);
+  });
+
+  test('gets a previously calculated area', () => {
+    const dummyPoints = [{ x: 1, y: 1, timestamp: 1000 }];
+    const timeHull = new TimeHull({ seriesPoints: dummyPoints });
+    timeHull.area = 1337;
+
+    expect(timeHull.getArea()).toBe(1337);
   });
 });
