@@ -76,4 +76,22 @@ describe('TimeHullSeries.getCentroidDistances()', () => {
 
     expect(hullseries.getCentroidDistances()).toEqual(1337);
   });
+
+  test('has invalid centroids (NaN)', () => {
+    const hullseries = new TimeHullSeries({
+      points,
+      period: 5000
+    });
+
+    hullseries.getHulls()[0].centroid = 'meh';
+    hullseries.getHulls()[1].centroid = 'meh';
+
+    expect(hullseries.getCentroidDistances()).toEqual([
+      0,
+      0,
+      76.829537144107394,
+      105.40925533894597,
+      75
+    ]);
+  });
 });
