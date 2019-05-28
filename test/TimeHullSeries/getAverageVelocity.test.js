@@ -12,7 +12,7 @@ describe('TimeHullSeries.getAverageVelocity()', () => {
     { x: 800, y: 400, timestamp: 7000 }, //  x:100  y:-100  total:141.421356237309505
     { x: 900, y: 300, timestamp: 8000 }, //  x:100  y:-100  total:141.421356237309505
     { x: 100, y: 200, timestamp: 9000 }, //  x:-800 y:-100  total:806.225774829854965
-    { x: 200, y: 100, timestamp: 10000 }, // x:100  y:-100  total:141.421356237309505
+    { x: 200, y: 100, timestamp: 10000 } // x:100  y:-100  total:141.421356237309505
   ];
 
   // total x: 1700
@@ -27,10 +27,10 @@ describe('TimeHullSeries.getAverageVelocity()', () => {
       period: 5000,
       timestep: 0,
       width: 1000,
-      height: 1000,
+      height: 1000
     });
 
-    expect(series.getAverageVelocity()).toBe(2545.872877758152974 / 10000);
+    expect(series.getAverageVelocity()).toBe(0.25458728777581535);
   });
 
   test('gets the average directional velocity', () => {
@@ -39,7 +39,7 @@ describe('TimeHullSeries.getAverageVelocity()', () => {
       period: 5000,
       timestep: 0,
       width: 1000,
-      height: 1000,
+      height: 1000
     });
 
     expect(series.getAverageVelocity({ which: 'x' })).toBe(1700 / 10000);
