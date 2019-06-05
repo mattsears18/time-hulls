@@ -1,4 +1,4 @@
-![Travis (.org)](https://img.shields.io/travis/mattsears18/time-hulls.svg)
+[![Build Status](https://travis-ci.org/mattsears18/time-hulls.svg?branch=master)](https://travis-ci.org/mattsears18/time-hulls)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/02990d92270f487dbfdb915bc01c1e30)](https://www.codacy.com/app/mattsears18/time-hulls?utm_source=github.com&utm_medium=referral&utm_content=mattsears18/time-hulls&utm_campaign=Badge_Grade)
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/02990d92270f487dbfdb915bc01c1e30)](https://www.codacy.com/app/mattsears18/time-hulls?utm_source=github.com&utm_medium=referral&utm_content=mattsears18/time-hulls&utm_campaign=Badge_Coverage)
 ![npm](https://img.shields.io/npm/v/time-hulls.svg)
