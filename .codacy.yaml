@@ -3,6 +3,8 @@ engines:
     enabled: true
     exclude_paths:
       - '**.test.js'
-      - './dist/**'
-      - './node_modules/**'
-      - './docs/**'
+
+exclude_paths:
+  - './dist/**'
+  - './node_modules/**'
+  - './docs/**'
