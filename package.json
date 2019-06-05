@@ -6,7 +6,7 @@
   "repository": "mattsears18/time-hulls",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage",
     "test-watch": "jest --watchAll --coverage",
     "lint": "eslint .",
     "build": "gulp"
@@ -28,6 +28,7 @@
     "@babel/register": "^7.4.4",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^24.8.0",
+    "codacy-coverage": "^3.4.0",
     "documentation": "^10.1.0",
     "eslint": "^5.14.1",
     "eslint-config-airbnb": "^17.1.0",
@@ -49,6 +50,7 @@
     "gulp-watch": "^5.0.1",
     "jest": "^24.8.0",
     "jest-mock": "^24.8.0",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "remark-lint": "^6.0.4"
   }
 }
