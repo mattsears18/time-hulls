@@ -1,0 +1,7 @@
+coverage:
+   enabled: true
+   exclude_paths:
+     - '**.test.js'
+     - './dist/**'
+     - './node_modules/**'
+     - './docs/**'
