@@ -1,10 +1,11 @@
+---
 engines:
-  coverage:
-    enabled: true
-    exclude_paths:
-      - '**.test.js'
-
+ coverage:
+   enabled: true
+   exclude_paths:
+     - '**/test/**'
+     - '**.test.js'
 exclude_paths:
-  - './dist/**'
-  - './node_modules/**'
-  - './docs/**'
+  - '**/dist/**'
+  - '**/docs/**'
+  - '*.min.js'
