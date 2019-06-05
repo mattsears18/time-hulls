@@ -1,6 +1,6 @@
 const TimeHull = require('../../lib/TimeHull');
 
-describe('TimeHull.polygon()', () => {
+describe('TimeHull.getPolygon()', () => {
   test('gets a polygon without passing options', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
@@ -10,7 +10,7 @@ describe('TimeHull.polygon()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.polygon()).toEqual([
+    expect(timeHull.getPolygon()).toEqual([
       { x: 200, y: 200 },
       { x: 100, y: 200 },
       { x: 100, y: 100 },
@@ -28,7 +28,7 @@ describe('TimeHull.polygon()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.polygon({})).toEqual([
+    expect(timeHull.getPolygon({})).toEqual([
       { x: 200, y: 200 },
       { x: 100, y: 200 },
       { x: 100, y: 100 },
@@ -48,7 +48,7 @@ describe('TimeHull.polygon()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.polygon({})).toEqual([
+    expect(timeHull.getPolygon({})).toEqual([
       { x: 200, y: 200 },
       { x: 100, y: 200 },
       { x: 100, y: 100 },
@@ -68,7 +68,7 @@ describe('TimeHull.polygon()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.polygon({ which: 'x' })).toEqual([200, 100, 100, 200, 200]);
+    expect(timeHull.getPolygon({ which: 'x' })).toEqual([200, 100, 100, 200, 200]);
   });
 
   test('gets the y coordinates of a polygon with inner points', () => {
@@ -82,13 +82,13 @@ describe('TimeHull.polygon()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.polygon({ which: 'y' })).toEqual([200, 200, 100, 100, 200]);
+    expect(timeHull.getPolygon({ which: 'y' })).toEqual([200, 200, 100, 100, 200]);
   });
 
   test('only has one point', () => {
     const points = [{ x: 100, y: 100, timestamp: 0 }];
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.polygon({})).toEqual([
+    expect(timeHull.getPolygon({})).toEqual([
       { x: 100, y: 100 },
       { x: 100, y: 100 },
     ]);
@@ -101,7 +101,7 @@ describe('TimeHull.polygon()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.polygon({})).toEqual([
+    expect(timeHull.getPolygon({})).toEqual([
       { x: 100, y: 100 },
       { x: 200, y: 100 },
       { x: 100, y: 100 },
@@ -116,7 +116,7 @@ describe('TimeHull.polygon()', () => {
     ];
 
     const timeHull = new TimeHull({ seriesPoints: points });
-    expect(timeHull.polygon({})).toEqual([
+    expect(timeHull.getPolygon({})).toEqual([
       { x: 100, y: 100 },
       { x: 100, y: 200 },
       { x: 200, y: 100 },
