@@ -47,7 +47,6 @@
     "gulp-babel": "^8.0.0",
     "gulp-documentation": "^3.2.1",
     "gulp-uglify": "^3.0.2",
-    "gulp-watch": "^5.0.1",
     "jest": "^24.8.0",
     "jest-mock": "^24.8.0",
     "prettier": "^1.16.4",
