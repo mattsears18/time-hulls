@@ -21,6 +21,22 @@ describe('TimeHullSeries.getAverageVelocity()', () => {
 
   // total time: 10000
 
+  test('has no averageVelocity when no hulls are generated', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+    expect(noHullSeries.getAverageVelocity()).toBe(0);
+    expect(noHullSeries.getAverageVelocity({ which: 'x' })).toBe(0);
+    expect(noHullSeries.getAverageVelocity({ which: 'y' })).toBe(0);
+  });
+
   test('gets the average velocity', () => {
     const series = new TimeHullSeries({
       points,

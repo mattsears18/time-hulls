@@ -27,6 +27,22 @@ describe('TimeHullSeries.getCentroidDistances()', () => {
 
   // total time: 5000
 
+  test('has no centroidDistances when no hulls are generated', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+    expect(noHullSeries.getCentroidDistances()).toEqual([]);
+    expect(noHullSeries.getCentroidDistances({ which: 'x' })).toEqual([]);
+    expect(noHullSeries.getCentroidDistances({ which: 'y' })).toEqual([]);
+  });
+
   test('gets the centroid distances', () => {
     const hullseries = new TimeHullSeries({
       points,
@@ -48,7 +64,13 @@ describe('TimeHullSeries.getCentroidDistances()', () => {
       period: 5000
     });
 
-    expect(hullseries.getCentroidDistances({ which: 'x' })).toEqual([75, 75, 75, 100, 0]);
+    expect(hullseries.getCentroidDistances({ which: 'x' })).toEqual([
+      75,
+      75,
+      75,
+      100,
+      0
+    ]);
   });
 
   test('gets the Y point distances', () => {

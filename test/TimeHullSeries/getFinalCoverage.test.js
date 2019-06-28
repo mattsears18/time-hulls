@@ -19,6 +19,21 @@ describe('TimeHullSeries.getFinalCoverage()', () => {
     { x: 0, y: 100, timestamp: 14000 } // coverage: 100 * 100 / 1000 / 1000 = 0.01
   ];
 
+  test('has no finalCoverage without any hulls', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getFinalCoverage()).toEqual(0);
+  });
+
   test('gets the final coverage', () => {
     const series = new TimeHullSeries({
       points,

@@ -27,6 +27,22 @@ describe('TimeHullSeries.getAverageCentroidVelocity()', () => {
 
   // total time: 5000
 
+  test('has no averageCentroidVelocity when no hulls are generated', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+    expect(noHullSeries.getAverageCentroidVelocity()).toBe(0);
+    expect(noHullSeries.getAverageCentroidVelocity({ which: 'x' })).toBe(0);
+    expect(noHullSeries.getAverageCentroidVelocity({ which: 'y' })).toBe(0);
+  });
+
   test('gets the average velocity', () => {
     const series = new TimeHullSeries({
       points,
@@ -49,6 +65,8 @@ describe('TimeHullSeries.getAverageCentroidVelocity()', () => {
     });
 
     expect(series.getAverageCentroidVelocity({ which: 'x' })).toBe(325 / 5000);
-    expect(series.getAverageCentroidVelocity({ which: 'y' })).toBe(0.03166666666666666);
+    expect(series.getAverageCentroidVelocity({ which: 'y' })).toBe(
+      0.03166666666666666
+    );
   });
 });

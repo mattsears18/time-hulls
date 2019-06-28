@@ -1,5 +1,20 @@
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
+test('has no hullDurations when no hulls are generated', () => {
+  const noHullPoints = [
+    { x: 100, y: 100, timestamp: 0 },
+    { x: 100, y: 100, timestamp: 1000 }
+  ];
+
+  const noHullSeries = new TimeHullSeries({
+    points: noHullPoints,
+    period: 100,
+    includeIncomplete: false
+  });
+
+  expect(noHullSeries.getHullDurations()).toEqual([]);
+});
+
 describe('TimeHullSeries.getHullDurations()', () => {
   const points = [
     { x: 100, y: 100, timestamp: 21500 }, // 0

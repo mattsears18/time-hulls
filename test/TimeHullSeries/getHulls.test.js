@@ -1,6 +1,53 @@
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
 describe('TimeHullSeries.getHulls()', () => {
+  test('has too few points to generate any hulls', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 200, timestamp: 100 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getHulls().length).toBe(0);
+  });
+
+  test('generates a hull even though it only has two unique points', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 },
+      { x: 100, y: 200, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getHulls().length).toEqual(1);
+  });
+
+  test('generates a single hull', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 200, y: 100, timestamp: 1000 },
+      { x: 100, y: 200, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getHulls().length).toEqual(1);
+  });
+
   test('gets no hulls when            period > duration, includeIncomplete = false', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 }, //

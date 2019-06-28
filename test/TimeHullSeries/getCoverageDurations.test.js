@@ -14,6 +14,21 @@ describe('TimeHullSeries.getCoverageDurations()', () => {
     { x: 100, y: 0, timestamp: 29050 } //        4    10000 / 1000 / 1000 * 0    = 0
   ];
 
+  test('has no coverageDurations when no hulls are generated', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getCoverageDurations()).toEqual([]);
+  });
+
   test('gets the hull coverageDurations', () => {
     const hullseries = new TimeHullSeries({
       points,
@@ -23,7 +38,13 @@ describe('TimeHullSeries.getCoverageDurations()', () => {
       height: 1000
     });
 
-    expect(hullseries.getCoverageDurations()).toEqual([10, 10.01, 9.99, 0.5, 0]);
+    expect(hullseries.getCoverageDurations()).toEqual([
+      10,
+      10.01,
+      9.99,
+      0.5,
+      0
+    ]);
   });
 
   test('gets cached coverageDurations', () => {

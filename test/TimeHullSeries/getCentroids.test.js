@@ -19,13 +19,32 @@ describe('TimeHullSeries.getCentroids()', () => {
     { x: 600, y: 100, timestamp: 14000 }
   ];
 
+  test('has no centroids when no hulls are generated', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getCentroids()).toEqual([]);
+    expect(noHullSeries.getCentroids({ which: 'x' })).toEqual([]);
+    expect(noHullSeries.getCentroids({ which: 'y' })).toEqual([]);
+  });
+
   test('specifies an invalid hull and defaults to all hulls', () => {
     const hullSeries = new TimeHullSeries({
       points,
       period: 5000
     });
 
-    expect(hullSeries.getCentroids({ hullIndex: 1337 })).toEqual(hullSeries.getCentroids());
+    expect(hullSeries.getCentroids({ hullIndex: 1337 })).toEqual(
+      hullSeries.getCentroids()
+    );
   });
 
   test('gets the centroids', () => {

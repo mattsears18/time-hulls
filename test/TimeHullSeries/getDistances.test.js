@@ -9,6 +9,37 @@ describe('TimeHullSeries.getDistances()', () => {
     { x: 500, y: 700, timestamp: 4000 }
   ];
 
+  test('has a distance even though no hulls are generated', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 200, y: 100, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getDistances()).toEqual([100]);
+    expect(noHullSeries.getDistances({ which: 'x' })).toEqual([100]);
+    expect(noHullSeries.getDistances({ which: 'y' })).toEqual([0]);
+  });
+
+  test('has no distances', () => {
+    const noHullPoints = [{ x: 200, y: 100, timestamp: 1000 }];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getDistances()).toEqual([]);
+    expect(noHullSeries.getDistances({ which: 'x' })).toEqual([]);
+    expect(noHullSeries.getDistances({ which: 'y' })).toEqual([]);
+  });
+
   test('gets the point distances', () => {
     const hullseries = new TimeHullSeries({
       points,
@@ -29,7 +60,12 @@ describe('TimeHullSeries.getDistances()', () => {
       period: 5000
     });
 
-    expect(hullseries.getDistances({ which: 'x' })).toEqual([100, 100, 100, 100]);
+    expect(hullseries.getDistances({ which: 'x' })).toEqual([
+      100,
+      100,
+      100,
+      100
+    ]);
   });
 
   test('gets the Y point distances', () => {
@@ -38,7 +74,12 @@ describe('TimeHullSeries.getDistances()', () => {
       period: 5000
     });
 
-    expect(hullseries.getDistances({ which: 'y' })).toEqual([100, 100, 100, 600]);
+    expect(hullseries.getDistances({ which: 'y' })).toEqual([
+      100,
+      100,
+      100,
+      600
+    ]);
   });
 
   test('gets previously cached distances', () => {

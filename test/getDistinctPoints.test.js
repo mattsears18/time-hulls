@@ -1,6 +1,6 @@
-const TimeHull = require('../../lib/TimeHull');
+const getDistinctPoints = require('../lib/getDistinctPoints');
 
-describe('TimeHull.distinctPoints()', () => {
+describe('getDistinctPoints()', () => {
   test('gets distinct points', () => {
     const points = [
       { x: 100, y: 100, timestamp: 0 },
@@ -14,14 +14,14 @@ describe('TimeHull.distinctPoints()', () => {
       { x: 100, y: 100, timestamp: 8000 },
       { x: 300, y: 100, timestamp: 9000 },
       { x: 100, y: 100, timestamp: 10000 },
-      { x: 100, y: 100, timestamp: 11000 },
+      { x: 100, y: 100, timestamp: 11000 }
     ];
 
-    expect(TimeHull.getDistinctPoints(points)).toEqual([
+    expect(getDistinctPoints(points)).toEqual([
       { x: 100, y: 100, timestamp: 0 },
       { x: 200, y: 100, timestamp: 2000 },
       { x: 100, y: 200, timestamp: 6000 },
-      { x: 300, y: 100, timestamp: 9000 },
+      { x: 300, y: 100, timestamp: 9000 }
     ]);
   });
 });

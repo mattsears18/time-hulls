@@ -1,6 +1,21 @@
 const TimeHullSeries = require('../../lib/TimeHullSeries');
 
 describe('TimeHullSeries.getAverageCoverage()', () => {
+  test('has no averageCoverage when no hulls are generated', () => {
+    const noHullPoints = [
+      { x: 100, y: 100, timestamp: 0 },
+      { x: 100, y: 100, timestamp: 1000 }
+    ];
+
+    const noHullSeries = new TimeHullSeries({
+      points: noHullPoints,
+      period: 100,
+      includeIncomplete: false
+    });
+
+    expect(noHullSeries.getAverageCoverage()).toBe(0);
+  });
+
   test('gets the average coverage', () => {
     const points = [
       { x: 100, y: 400, timestamp: 0 },
@@ -17,7 +32,7 @@ describe('TimeHullSeries.getAverageCoverage()', () => {
       { x: 300, y: 400, timestamp: 11000 }, // duration: 1000, coverage: 165000 / 1000000 = 165
       { x: 400, y: 300, timestamp: 12000 }, // duration: 1000, coverage: 140000 / 1000000 = 140
       { x: 500, y: 200, timestamp: 13000 }, // duration: 1000, coverage: 115000 / 1000000 = 115
-      { x: 600, y: 100, timestamp: 14000 }, // duration: 0, coverage:
+      { x: 600, y: 100, timestamp: 14000 } // duration: 0, coverage:
     ];
 
     // total coverageDuration: 1340
@@ -29,7 +44,7 @@ describe('TimeHullSeries.getAverageCoverage()', () => {
       period: 5000,
       timestep: 0,
       width: 1000,
-      height: 1000,
+      height: 1000
     });
 
     expect(series.getAverageCoverage()).toBe(1340 / 9000);
@@ -41,13 +56,13 @@ describe('TimeHullSeries.getAverageCoverage()', () => {
       { x: 200, y: 300, timestamp: 0 },
       { x: 300, y: 200, timestamp: 0 },
       { x: 400, y: 100, timestamp: 0 },
-      { x: 500, y: 700, timestamp: 0 },
+      { x: 500, y: 700, timestamp: 0 }
     ];
 
     const series = new TimeHullSeries({
       points,
       period: 5000,
-      timestep: 0,
+      timestep: 0
     });
 
     expect(series.getAverageCoverage()).toBe(0);
@@ -59,13 +74,13 @@ describe('TimeHullSeries.getAverageCoverage()', () => {
       { x: 200, y: 300, timestamp: 0 },
       { x: 300, y: 200, timestamp: 0 },
       { x: 400, y: 100, timestamp: 0 },
-      { x: 500, y: 700, timestamp: 0 },
+      { x: 500, y: 700, timestamp: 0 }
     ];
 
     const series = new TimeHullSeries({
       points,
       period: 5000,
-      timestep: 0,
+      timestep: 0
     });
 
     series.averageCoverage = 1337;
