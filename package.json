@@ -26,6 +26,7 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
+    "acorn": ">=5.7.4",
     "babel-eslint": "^9.0.0",
     "babel-jest": "^24.8.0",
     "codacy-coverage": "^3.4.0",
