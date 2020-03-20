@@ -49,6 +49,7 @@
     "gulp-uglify": "^3.0.2",
     "jest": "^24.8.0",
     "jest-mock": "^24.8.0",
+    "minimist": ">=1.2.2",
     "prettier": "^1.16.4",
     "remark-lint": "^6.0.4"
   }
