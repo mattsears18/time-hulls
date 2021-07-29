@@ -1,6 +1,6 @@
 {
   "name": "time-hulls",
-  "version": "0.0.112",
+  "version": "0.0.113",
   "description": "Calculates a series of convex hulls for periods of timestamped 2D point data",
   "license": "GPL-3.0-only",
   "repository": "mattsears18/time-hulls",
@@ -20,7 +20,7 @@
   "dependencies": {
     "area-polygon": "^1.0.1",
     "hull.js": "^0.2.11",
-    "jStat": "^1.7.1"
+    "jstat": "^1.9.4"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
