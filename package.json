@@ -29,7 +29,7 @@
     "babel-eslint": "^9.0.0",
     "babel-jest": "^24.8.0",
     "codacy-coverage": "^3.4.0",
-    "documentation": "^10.1.0",
+    "documentation": "^14.0.0",
     "eslint": "^5.14.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
